@@ -1,7 +1,5 @@
 <template>
-  <div id="content_div" >
-    <h1>主题内容！</h1>
-    <table>
+    <table class="dataTable_css">
       <tr>
         <td>1</td>
         <td>2</td>
@@ -15,11 +13,10 @@
         <td>{{d.id}}</td>
         <td>{{d.author.loginname}}</td>
         <td>{{$dateTimeUtils.transTime(d.create_at)}}</td>
-        <td>{{d.title}}</td>
+        <td><router-link :to="'/content/' + d.id">{{d.title}}</router-link></td>
         <td>{{d.visit_count}}</td>
       </tr>
     </table>
-  </div>
 </template>
 
 <script>
@@ -32,3 +29,10 @@ export default {
   }
 }
 </script>
+
+<style>
+  .dataTable_css {
+    width: 80%;
+    margin:auto;
+  }
+</style>
