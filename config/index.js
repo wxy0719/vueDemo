@@ -11,11 +11,13 @@ module.exports = {
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
     proxyTable: {
+      /**
       '/api/v1/**': {
         target: 'https://cnodejs.org', // 你接口的域名
         secure: false,
         changeOrigin: false,
       }
+      */
     },
 
     // Various Dev Server settings
@@ -56,7 +58,7 @@ module.exports = {
     // Paths
     assetsRoot: path.resolve(__dirname, '../dist'),
     assetsSubDirectory: 'static',
-    assetsPublicPath: '/',
+    assetsPublicPath: './',
 
     /**
      * Source Maps
