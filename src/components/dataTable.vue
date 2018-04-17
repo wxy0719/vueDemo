@@ -1,31 +1,44 @@
 <template>
-    <table class="dataTable_css">
-      <tr>
-        <td>1</td>
-        <td>2</td>
-        <td>3</td>
-        <td>4</td>
-      </tr>
-      <tr>
-        <td v-for='c in column_list'>{{c}}</td>
-      </tr>
-      <tr v-for='d in data_list'>
-        <td>{{d.id}}</td>
-        <td>{{d.author.loginname}}</td>
-        <td>{{$dateTimeUtils.transTime(d.create_at)}}</td>
-        <td><router-link :to="'/content/' + d.id">{{d.title}}</router-link></td>
-        <td>{{d.visit_count}}</td>
-      </tr>
-    </table>
+    <table class="layui-hide" :id="tab_id"></table>
 </template>
 
 <script>
 export default {
-  props: ['column_list','data_list'],
+  props: ['column_list','data_list','tab_id'],
   data() {
     return {
-
     }
+  },
+  created () {
+    var r=new Array()
+    r.push(this.tab_id)
+    r.push(this.column_list)
+    r.push(this.data_list)
+    this.getData(r)
+  },
+  methods: {
+    getData (r) {
+      layui.use('table', function(){
+        var table = layui.table;
+
+        table.render({
+          elem: '#'+r[0]
+          ,cellMinWidth: 80 //全局定义常规单元格的最小宽度，layui 2.2.1 新增
+          ,cols: r[1]
+          ,data: r[2]
+          ,page: true
+        });
+      });
+    }
+  },
+  watch: {
+    data_list(newValue, oldValue) {
+      var r=new Array()
+      r.push(this.tab_id)
+      r.push(this.column_list)
+      r.push(newValue)
+      this.getData(r)
+　　}
   }
 }
 </script>

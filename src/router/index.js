@@ -2,9 +2,9 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import index from '@/page/index'
 import content from '@/page/content'
-import user from '@/page/system/user'
-import prvi from '@/page/system/prvi'
-import menu from '@/page/system/menu'
+import dataTable from '@/page/system/dataTable'
+import tree_1 from '@/page/system/tree_1'
+import tab from '@/page/system/tab'
 
 Vue.use(Router)
 
@@ -18,9 +18,9 @@ export default new Router({
       path: '/system',
       component: index,
       children:[
-        {path:'user',component:user},
-        {path:'prvi',component:prvi},
-        {path:'menu',component:menu}
+        {path:'dataTable',component:dataTable},
+        {path:'tree_1',component:tree_1},
+        {path:'tab',component:tab}
       ]
     },
     {

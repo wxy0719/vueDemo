@@ -4,16 +4,16 @@
         <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
         <ul class="layui-nav layui-nav-tree"  lay-filter="test">
             <li class="layui-nav-item layui-nav-itemed">
-                <a class="" href="javascript:;">系统管理</a>
+                <a class="" href="javascript:;">子组件样例</a>
                 <dl class="layui-nav-child">
                     <dd>
-                      <router-link :to="'/system/user'">用户管理</router-link>
+                      <router-link :to="'/system/dataTable'">数据表格</router-link>
                     </dd>
                     <dd>
-                      <router-link :to="'/system/prvi'">权限管理</router-link>
+                      <router-link :to="'/system/tree_1'">树形菜单</router-link>
                     </dd>
                     <dd>
-                      <router-link :to="'/system/menu'">菜单管理</router-link>
+                      <router-link :to="'/system/tab'">选项卡</router-link>
                     </dd>
                 </dl>
             </li>

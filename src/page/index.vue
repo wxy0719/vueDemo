@@ -22,11 +22,6 @@ export default {
   components: {Header, DataTable, Footer, Sider}
 }
 
-//JavaScript代码区域
-layui.use('element', function(){
-    var element = layui.element;
-});
-
 </script>
 
 <style>
