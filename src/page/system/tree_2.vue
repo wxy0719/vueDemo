@@ -1,9 +1,9 @@
 <template>
-    <tree_1 :dataList="dataList"></tree_1>
+    <p>菜单2</p>
 </template>
 
 <script>
-import tree_1 from '../../components/tree_1.vue'
+import tree_1 from '../../components/tree_2.vue'
 
 export default {
   components: {tree_1},

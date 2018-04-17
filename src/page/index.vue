@@ -12,10 +12,10 @@
 </template>
 
 <script>
-import Header from '../components/header.vue'
-import Sider from '../components/sider.vue'
+import Header from './header.vue'
+import Sider from './sider.vue'
+import Footer from './footer.vue'
 import DataTable from '../components/dataTable.vue'
-import Footer from '../components/footer.vue'
 
 export default {
   name: 'App',

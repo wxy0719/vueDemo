@@ -1,11 +1,11 @@
 <template>
-  <div class="layui-tab layui-tab-brief" lay-filter="docDemoTabBrief">
+  <div :class="t_cssStr" lay-filter="docDemoTabBrief" :lay-allowclose="isClose" style="height: 100%;">
   <ul class="layui-tab-title">
     <li v-for="(item, index) in title" :class="[index === 0 ? 'layui-this' : '']">
       {{ item }}
     </li>
   </ul>
-  <div class="layui-tab-content" style="height: 100px;">
+  <div class="layui-tab-content" style="height: 100%;">
     <div v-for="(item, index) in content" :class="[index === 0 ? 'layui-tab-item layui-show' : 'layui-tab-item']" >
       {{ item }}
     </div>
@@ -15,10 +15,10 @@
 
 <script>
   export default {
-    props: ['title','content'],
+    props: ['title','content','cssStr','isClose'],
     data() {
       return {
-
+        't_cssStr': 'layui-tab '+this.cssStr
       }
     },
     created (){

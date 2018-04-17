@@ -1,5 +1,9 @@
 <template>
-    <tab :title="title" :content="content" ></tab>
+    <!--
+    layui-tab-card  卡片风格
+    layui-tab-brief 简洁风格
+    -->
+    <tab :title="title" :content="content" :cssStr="card" :isClose="false"></tab>
 </template>
 
 <script>
@@ -20,7 +24,8 @@
           '用户管理222',
           '权限分配333',
           '订单管理444'
-        ]
+        ],
+        'card': 'layui-tab-card'
       }
     }
 
