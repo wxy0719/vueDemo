@@ -1,12 +1,12 @@
 <template>
-    <tree_1 :dataList="dataList"></tree_1>
+    <tree :dataList="dataList"></tree>
 </template>
 
 <script>
-import tree_1 from '../../components/tree_1.vue'
+import tree from '../../components/tree.vue'
 
 export default {
-  components: {tree_1},
+  components: {tree},
   data () {
     return {
       'dataList' : []

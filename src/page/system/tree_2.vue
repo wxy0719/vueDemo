@@ -1,14 +1,21 @@
 <template>
-    <p>菜单2</p>
+<div>
+    <ztree :dataList="dataList" :treeId="treeId" v-on:p_method="showCheckedMsg"></ztree>
+    <div>
+      选中的值：
+      <input id="ckdMsg" value="" />
+    </div>
+</div>
 </template>
 
 <script>
-import tree_1 from '../../components/tree_2.vue'
+import ztree from '../../components/ztree.vue'
 
 export default {
-  components: {tree_1},
+  components: {ztree},
   data () {
     return {
+      'treeId' : 'testTree',
       'dataList' : []
     }
   },
@@ -18,16 +25,23 @@ export default {
   methods : {
     getData () {
       this.dataList = [
-        ['true','父级一','javascript:;',
-          [
-            ['false','子级一','1','0'],
-            ['false','子级二','2','0'],
-            ['false','子级三','3','0'],
-            ['false','子级四','4','1']
-          ]
-        ],
-        ['true','跳转一','',[]]
-      ]
+  			{ id:1, pId:0, name:"随意勾选 1", open:true},
+  			{ id:11, pId:1, name:"随意勾选 1-1", open:true},
+  			{ id:111, pId:11, name:"随意勾选 1-1-1"},
+  			{ id:112, pId:11, name:"随意勾选 1-1-2"},
+  			{ id:12, pId:1, name:"随意勾选 1-2", open:true},
+  			{ id:121, pId:12, name:"随意勾选 1-2-1"},
+  			{ id:122, pId:12, name:"随意勾选 1-2-2"},
+  			{ id:2, pId:0, name:"随意勾选 2", checked:true, open:true},
+  			{ id:21, pId:2, name:"随意勾选 2-1"},
+  			{ id:22, pId:2, name:"随意勾选 2-2", open:true},
+  			{ id:221, pId:22, name:"随意勾选 2-2-1", checked:true},
+  			{ id:222, pId:22, name:"随意勾选 2-2-2"},
+  			{ id:23, pId:2, name:"随意勾选 2-3"}
+		  ]
+    },
+    showCheckedMsg (msg){
+      $("#ckdMsg").val(msg)
     }
   }
 }
