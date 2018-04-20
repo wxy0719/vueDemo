@@ -3,10 +3,10 @@
     <div class="layui-logo">layui 后台布局</div>
     <!-- 头部区域（可配合layui已有的水平导航） -->
     <ul class="layui-nav layui-layout-left">
-        <li class="layui-nav-item"><a href="">控制台</a></li>
-        <li class="layui-nav-item"><a href="">商品管理</a></li>
-        <li class="layui-nav-item"><a href="">用户</a></li>
-        <li class="layui-nav-item">
+        <li class="layui-nav-item" style="width:70px;"><a href="">控制台</a></li>
+        <li class="layui-nav-item" style="width:70px;"><a href="">商品管理</a></li>
+        <li class="layui-nav-item" style="width:70px;"><a href="">用户</a></li>
+        <li class="layui-nav-item" style="width:90px;">
             <a href="javascript:;">其它系统</a>
             <dl class="layui-nav-child">
                 <dd><a href="">邮件管理</a></dd>

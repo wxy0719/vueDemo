@@ -29,6 +29,7 @@ export default {
             ['false','树形菜单二','/system/tree_2','0'],
             ['false','选项卡','/system/tab','0'],
             ['false','进度条','/system/progressBar','0'],
+            ['false','布局','/system/layout','0'],
             ['false','面板','/system/blackBoard','0'],
             ['false','时间线','/system/timeLine','0'],
             ['false','时间控件','/system/datePicker','0'],

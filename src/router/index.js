@@ -7,6 +7,7 @@ import tree_1 from '@/page/system/tree_1'
 import tree_2 from '@/page/system/tree_2'
 import tab from '@/page/system/tab'
 import progressBar from '@/page/system/progressBar'
+import layout from '@/page/system/layout'
 import blackBoard from '@/page/system/blackBoard'
 import timeLine from '@/page/system/timeLine'
 import datePicker from '@/page/system/datePicker'
@@ -31,6 +32,7 @@ export default new Router({
         {path:'tree_2',component:tree_2},
         {path:'tab',component:tab},
         {path:'progressBar',component:progressBar},
+        {path:'layout',component:layout},
         {path:'blackBoard',component:blackBoard},
         {path:'timeLine',component:timeLine},
         {path:'datePicker',component:datePicker},
