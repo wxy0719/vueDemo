@@ -10,7 +10,6 @@ html #layuicss-layuiAdmin {
 }
 
 html {
-	background-color: #f2f2f2;
 	color: #666
 }
 
@@ -332,7 +331,6 @@ html {
 
 .layadmin-side-shrink .layui-layout-admin .layui-logo {
 	width: 60px;
-	background-image: url(res/logo.png)
 }
 
 .layadmin-side-shrink .layui-layout-admin .layui-logo span {

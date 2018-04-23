@@ -1,5 +1,5 @@
 <template>
-<div class="layadmin-tabsbody-item layui-show">
+<div class="layadmin-tabsbody-item layui-show" style="background-color: #f2f2f2;">
 <div class="layui-fluid">
 <div class="layui-row layui-col-space15">
   <div class="layui-col-md8">

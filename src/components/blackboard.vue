@@ -1,64 +1,44 @@
 <template>
   <div class="layui-collapse" lay-accordion="">
-    <div class="layui-colla-item">
-      <h2 class="layui-colla-title">文豪</h2>
+    <!--
+    只循环展示2级菜单
+    -->
+    <!-- 第一层 -->
+    <div class="layui-colla-item" v-for="item in dataList">
+      <h2 class="layui-colla-title">{{item[0]}}</h2>
       <div class="layui-colla-content layui-show">
-
-        <div class="layui-collapse" lay-accordion="">
-          <div class="layui-colla-item">
-            <h2 class="layui-colla-title">唐代</h2>
-            <div class="layui-colla-content layui-show">
-
-              <div class="layui-collapse" lay-accordion="">
-                <div class="layui-colla-item">
-                  <h2 class="layui-colla-title">杜甫</h2>
-                  <div class="layui-colla-content layui-show">
-                    伟大的诗人
-                  </div>
-                </div>
-                <div class="layui-colla-item">
-                  <h2 class="layui-colla-title">李白</h2>
+        <div v-if="item[2]" class="layui-collapse" lay-accordion="">
+          <!-- 第二层 -->
+          <div class="layui-colla-item" v-for="item_1 in item[2]">
+            <h2 class="layui-colla-title">{{item_1[0]}}</h2>
+            <div class="layui-colla-content">
+              <div v-if="item_1[2]" class="layui-collapse" lay-accordion="">
+                <div class="layui-colla-item" v-for="item_2 in item_1[2]">
+                  <h2 class="layui-colla-title">{{item_2[0]}}</h2>
                   <div class="layui-colla-content">
-                    <p>据说是韩国人</p>
-                  </div>
-                </div>
-                <div class="layui-colla-item">
-                  <h2 class="layui-colla-title">王勃</h2>
-                  <div class="layui-colla-content">
-                    <p>千古绝唱《滕王阁序》</p>
+                    <!-- 第三层 -->
+                    <div v-if="item_2[2]" class="layui-collapse" lay-accordion="">
+                      <div class="layui-colla-item" v-for="item_3 in item_2[2]">
+                        <h2 class="layui-colla-title">{{item_3[0]}}</h2>
+                        <div class="layui-colla-content">
+                          {{item_3[1]}}
+                        </div>
+                      </div>
+                    </div>
+                    <p v-else >{{item_2[1]}}</p>
+                    <!-- 第三层 -->
                   </div>
                 </div>
               </div>
-
+              <p v-else >{{item_1[1]}}</p>
             </div>
           </div>
-          <div class="layui-colla-item">
-            <h2 class="layui-colla-title">宋代</h2>
-            <div class="layui-colla-content">
-              <p>比如苏轼、李清照</p>
-            </div>
-          </div>
-          <div class="layui-colla-item">
-            <h2 class="layui-colla-title">当代</h2>
-            <div class="layui-colla-content">
-              <p>比如贤心</p>
-            </div>
-          </div>
+          <!-- 第二层 -->
         </div>
+        <p v-else >{{item[1]}}</p>
       </div>
     </div>
-    <div class="layui-colla-item">
-      <h2 class="layui-colla-title">科学家</h2>
-      <div class="layui-colla-content">
-        <p>伟大的科学家</p>
-      </div>
-    </div>
-    <div class="layui-colla-item">
-      <h2 class="layui-colla-title">艺术家</h2>
-      <div class="layui-colla-content">
-        <p>浑身散发着艺术细胞</p>
-      </div>
-    </div>
+    <!-- 第一层 -->
   </div>
 </template>
 
@@ -70,12 +50,12 @@
 
       }
     },
-    created (){
+    created(){
       this.getData()
     },
     methods : {
       getData() {
-
+        
       }
     }
   }

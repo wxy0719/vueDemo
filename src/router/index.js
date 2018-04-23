@@ -2,18 +2,6 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import index from '@/page/index'
 import content from '@/page/content'
-import dataTable from '@/page/system/dataTable'
-import tree_1 from '@/page/system/tree_1'
-import tree_2 from '@/page/system/tree_2'
-import tab from '@/page/system/tab'
-import progressBar from '@/page/system/progressBar'
-import layout from '@/page/system/layout'
-import blackBoard from '@/page/system/blackBoard'
-import timeLine from '@/page/system/timeLine'
-import datePicker from '@/page/system/datePicker'
-import fileUpLoad from '@/page/system/fileUpLoad'
-import carousel from '@/page/system/carousel'
-import utils from '@/page/system/utils'
 
 Vue.use(Router)
 
@@ -27,18 +15,19 @@ export default new Router({
       path: '/system',
       component: index,
       children:[
-        {path:'dataTable',component:dataTable},
-        {path:'tree_1',component:tree_1},
-        {path:'tree_2',component:tree_2},
-        {path:'tab',component:tab},
-        {path:'progressBar',component:progressBar},
-        {path:'layout',component:layout},
-        {path:'blackBoard',component:blackBoard},
-        {path:'timeLine',component:timeLine},
-        {path:'datePicker',component:datePicker},
-        {path:'fileUpLoad',component:fileUpLoad},
-        {path:'carousel',component:carousel},
-        {path:'utils',component:utils}
+        {path:'dataTable',component:resolve => require(['@/page/system/dataTable'],resolve)},
+        {path:'tree_1',component:resolve => require(['@/page/system/tree_1'],resolve)},
+        {path:'tree_2',component:resolve => require(['@/page/system/tree_2'],resolve)},
+        {path:'tab',component:resolve => require(['@/page/system/tab'],resolve)},
+        {path:'progressBar',component:resolve => require(['@/page/system/progressBar'],resolve)},
+        {path:'layout',component:resolve => require(['@/page/system/layout'],resolve)},
+        {path:'blackBoard',component:resolve => require(['@/page/system/blackBoard'],resolve)},
+        {path:'chart',component:resolve => require(['@/page/system/chart'],resolve)},
+        {path:'timeLine',component:resolve => require(['@/page/system/timeLine'],resolve)},
+        {path:'datePicker',component:resolve => require(['@/page/system/datePicker'],resolve)},
+        {path:'fileUpLoad',component:resolve => require(['@/page/system/fileUpLoad'],resolve)},
+        {path:'carousel',component:resolve => require(['@/page/system/carousel'],resolve)},
+        {path:'utils',component:resolve => require(['@/page/system/utils'],resolve)}
       ]
     },
     {

@@ -16,7 +16,7 @@ export default {
       'isShowPercent' : 'true',
       'filterId' : 'demo',
       'bgColor' : 'red',
-      'defaultPercent' : '0',
+      'defaultPercent' : '20',
       'nowPercent' : '0'
     }
   },
