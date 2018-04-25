@@ -3,20 +3,20 @@
  @Name：layui.tree 树组件
  @Author：贤心
  @License：MIT
-    
+
  */
- 
- 
+
+
 layui.define('jquery', function(exports){
   "use strict";
-  
+
   var $ = layui.$
   ,hint = layui.hint();
-  
+
   var enterSkin = 'layui-tree-enter', Tree = function(options){
     this.options = options;
   };
-  
+
   //图标
   var icon = {
     arrow: ['&#xe623;', '&#xe625;'] //箭头
@@ -25,7 +25,7 @@ layui.define('jquery', function(exports){
     ,branch: ['&#xe622;', '&#xe624;'] //父节点
     ,leaf: '&#xe621;' //叶节点
   };
-  
+
   //初始化
   Tree.prototype.init = function(elem){
     var that = this;
@@ -36,12 +36,12 @@ layui.define('jquery', function(exports){
     that.tree(elem);
     that.on(elem);
   };
-  
+
   //树节点解析
   Tree.prototype.tree = function(elem, children){
     var that = this, options = that.options
     var nodes = children || options.nodes;
-    
+
     layui.each(nodes, function(index, item){
       var hasChild = item.children && item.children.length > 0;
       var ul = $('<ul class="'+ (item.spread ? "layui-show" : "") +'"></ul>');
@@ -52,7 +52,7 @@ layui.define('jquery', function(exports){
             item.spread ? icon.arrow[1] : icon.arrow[0]
           ) +'</i>' : '';
         }()
-        
+
         //复选框/单选框
         ,function(){
           return options.check ? (
@@ -63,7 +63,7 @@ layui.define('jquery', function(exports){
             ) +'</i>'
           ) : '';
         }()
-        
+
         //节点
         ,function(){
           return '<a href="'+ (item.href || 'javascript:;') +'" '+ (
@@ -76,28 +76,28 @@ layui.define('jquery', function(exports){
           ) +'</i>') //节点图标
           + ('<cite>'+ (item.name||'未命名') +'</cite></a>');
         }()
-      
+
       ,'</li>'].join(''));
-      
+
       //如果有子节点，则递归继续生成树
       if(hasChild){
         li.append(ul);
         that.tree(ul, item.children);
       }
-      
+
       elem.append(li);
-      
+
       //触发点击节点回调
-      typeof options.click === 'function' && that.click(li, item); 
-      
+      typeof options.click === 'function' && that.click(li, item);
+
       //伸展节点
       that.spread(li, item);
-      
+
       //拖拽节点
-      options.drag && that.drag(li, item); 
+      options.drag && that.drag(li, item);
     });
   };
-  
+
   //点击节点回调
   Tree.prototype.click = function(elem, item){
     var that = this, options = that.options;
@@ -106,13 +106,13 @@ layui.define('jquery', function(exports){
       options.click(item)
     });
   };
-  
+
   //伸展节点
   Tree.prototype.spread = function(elem, item){
     var that = this, options = that.options;
     var arrow = elem.children('.layui-tree-spread')
     var ul = elem.children('ul'), a = elem.children('a');
-    
+
     //执行伸展
     var open = function(){
       if(elem.data('spread')){
@@ -127,24 +127,24 @@ layui.define('jquery', function(exports){
         a.find('.layui-icon').html(icon.branch[1]);
       }
     };
-    
+
     //如果没有子节点，则不执行
     if(!ul[0]) return;
-    
+
     arrow.on('click', open);
     a.on('dblclick', open);
   }
-  
+
   //通用事件
   Tree.prototype.on = function(elem){
     var that = this, options = that.options;
     var dragStr = 'layui-tree-drag';
-    
+
     //屏蔽选中文字
     elem.find('i').on('selectstart', function(e){
       return false
     });
-    
+
     //拖拽
     if(options.drag){
       $(document).on('mousemove', function(e){
@@ -171,7 +171,7 @@ layui.define('jquery', function(exports){
       });
     }
   };
-    
+
   //拖拽节点
   Tree.prototype.move = {};
   Tree.prototype.drag = function(elem, item){
@@ -202,7 +202,7 @@ layui.define('jquery', function(exports){
       }
     });
   };
-  
+
   //暴露接口
   exports('tree', function(options){
     var tree = new Tree(options = options || {});

@@ -1,12 +1,12 @@
 <template>
   <div class="layui-progress" :class="isBigCSS" :lay-showpercent="isShowPercent" :lay-filter="filterId">
-    <div class="layui-progress-bar" :class="bgColorCSS" :lay-percent="defaultPercent"></div>
+    <div class="layui-progress-bar" :class="bgColorCSS" :lay-percent="nowPercent+'%'"></div>
   </div>
 </template>
 
 <script>
   export default {
-    props: ['isBig','isShowPercent','filterId','bgColor','defaultPercent','nowPercent'],
+    props: ['isBig','isShowPercent','filterId','bgColor','nowPercent'],
     data() {
       return {
 
@@ -53,7 +53,7 @@
             var filterId_ = this.filterId
             layui.use('element', function(){
               var $ = layui.jquery
-              layui.element.progress(filterId_, newValue+'%');
+              layui.element.progress(filterId_, newValue+'%')
             });
           }
         }

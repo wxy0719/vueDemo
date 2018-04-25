@@ -15,11 +15,19 @@
 import Header from './header.vue'
 import Sider from './sider.vue'
 import Footer from './footer.vue'
-import DataTable from '../components/dataTable.vue'
 
 export default {
   name: 'App',
-  components: {Header, DataTable, Footer, Sider}
+  components: {Header, Footer, Sider},
+  data() {
+    return {
+
+    }
+  },
+  methods : {
+    getData() {
+    }
+  }
 }
 
 </script>

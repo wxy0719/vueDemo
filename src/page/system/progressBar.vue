@@ -1,6 +1,6 @@
 <template>
   <div>
-    <progressBar :isBig='isBig' :isShowPercent='isShowPercent' :filterId='filterId' :bgColor='bgColor' :defaultPercent='defaultPercent' :nowPercent='nowPercent'></progressBar>
+    <progressBar :isBig='isBig' :isShowPercent='isShowPercent' :filterId='filterId' :bgColor='bgColor' :nowPercent='nowPercent'></progressBar>
     <input :value='nowPercent' @keydown.up='up' @keydown.down='down'> 使用键盘上下键控制进度条
   </div>
 </template>
@@ -16,8 +16,7 @@ export default {
       'isShowPercent' : 'true',
       'filterId' : 'demo',
       'bgColor' : 'red',
-      'defaultPercent' : '20',
-      'nowPercent' : '0'
+      'nowPercent' : '20'
     }
   },
   created () {
@@ -28,10 +27,14 @@ export default {
 
     },
     up () {
-      this.nowPercent ++;
+      if(this.nowPercent<100){
+        this.nowPercent ++
+      }
     },
     down () {
-      this.nowPercent --;
+      if(this.nowPercent>0){
+        this.nowPercent --
+      }
     }
   }
 }
