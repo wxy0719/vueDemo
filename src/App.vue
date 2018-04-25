@@ -3,6 +3,9 @@
 </template>
 
 <script>
+var layer = null;
+var element = null;
+
 export default {
   data() {
     return {
@@ -10,16 +13,16 @@ export default {
     }
   },
   beforeCreate(){
-    layui.use('element', function(){
-      var element = layui.element; //导航的hover效果、二级菜单等功能，需要依赖element模块
-
-    });
+    layui.use(['element','layer'], function(){
+      element = layui.element //导航的hover效果、二级菜单等功能，需要依赖element模块
+      layer = layui.layer
+    })
   },
   updated(){
-    layui.use('element', function(){
-      var element = layui.element; //导航的hover效果、二级菜单等功能，需要依赖element模块
-
-    });
+    layui.use(['element','layer'], function(){
+      element = layui.element //导航的hover效果、二级菜单等功能，需要依赖element模块
+      layer = layui.layer
+    })
   },
   methods : {
     getData() {

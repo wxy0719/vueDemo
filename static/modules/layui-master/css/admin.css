@@ -72,11 +72,6 @@ html {
 	padding: 0 15px
 }
 
-.layui-layout-admin .layui-body {
-	top: 90px;
-	bottom: 0
-}
-
 .layui-layout-admin .layui-body .layadmin-tabsbody-item {
 	position: absolute;
 	top: 0;
