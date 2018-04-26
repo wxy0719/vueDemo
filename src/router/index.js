@@ -22,10 +22,11 @@ export default new Router({
         {path:'progressBar',component:resolve => require(['@/page/system/progressBar'],resolve)},
         {path:'layout',component:resolve => require(['@/page/system/layout'],resolve)},
         {path:'blackBoard',component:resolve => require(['@/page/system/blackBoard'],resolve)},
-        {path:'chart',component:resolve => require(['@/page/system/chart'],resolve)},
         {path:'timeLine',component:resolve => require(['@/page/system/timeLine'],resolve)},
         {path:'datePicker',component:resolve => require(['@/page/system/datePicker'],resolve)},
         {path:'layer',component:resolve => require(['@/page/system/layer'],resolve)},
+        {path:'chart1',component:resolve => require(['@/page/system/chart1'],resolve)},
+        {path:'chart2',component:resolve => require(['@/page/system/chart2'],resolve)},
         {path:'fileUpLoad',component:resolve => require(['@/page/system/fileUpLoad'],resolve)},
         {path:'carousel',component:resolve => require(['@/page/system/carousel'],resolve)},
         {path:'utils',component:resolve => require(['@/page/system/utils'],resolve)}

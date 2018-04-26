@@ -34,6 +34,8 @@ export default {
             ['false','时间线','/system/timeLine','0'],
             ['false','时间控件','/system/datePicker','0'],
             ['false','弹出层','/system/layer','0'],
+            ['false','图表一','/system/chart1','0'],
+            ['false','图表二','/system/chart2','0'],
             ['false','文件上传','/system/fileUpLoad','0'],
             ['false','轮播','/system/carousel','0'],
             ['false','工具集','/system/utils','0']
