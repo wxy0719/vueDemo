@@ -6,7 +6,7 @@
     <!-- 第一层 -->
     <div class="layui-colla-item" v-for="item in dataList">
       <h2 class="layui-colla-title">{{item[0]}}</h2>
-      <div class="layui-colla-content layui-show">
+      <div class="layui-colla-content">
         <div v-if="item[2]" class="layui-collapse" lay-accordion="">
           <!-- 第二层 -->
           <div class="layui-colla-item" v-for="item_1 in item[2]">
@@ -56,7 +56,7 @@
     },
     methods : {
       getData() {
-        
+
       }
     }
   }
