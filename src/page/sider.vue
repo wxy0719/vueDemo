@@ -25,8 +25,10 @@ export default {
         ['true','子组件样例','javascript:;',
           [
             ['false','数据表格','/system/dataTable','0'],
-            ['false','树形菜单一','/system/tree_1','0'],
-            ['false','树形菜单二','/system/tree_2','0'],
+            ['true','树形菜单','javascript:;','9',[
+              ['false','树形菜单一','/system/tree_1','0'],
+              ['false','树形菜单二','/system/tree_2','0']
+            ]],
             ['false','选项卡','/system/tab','0'],
             ['false','进度条','/system/progressBar','0'],
             ['false','布局','/system/layout','0'],
@@ -34,8 +36,13 @@ export default {
             ['false','时间线','/system/timeLine','0'],
             ['false','时间控件','/system/datePicker','0'],
             ['false','弹出层','/system/layer','0'],
-            ['false','图表一','/system/chart1','0'],
-            ['false','图表二','/system/chart2','0'],
+            ['true','图表','javascript:;','9',[
+              ['false','图表-柱状图','/system/chart1','0'],
+              ['false','图表-条状图','/system/chart2','0'],
+              ['false','图表-饼状图','/system/chart3','0'],
+              ['false','图表-折线图','/system/chart4','0'],
+              ['false','图表-面积图','/system/chart5','0']
+            ]],
             ['false','文件上传','/system/fileUpLoad','0'],
             ['false','轮播','/system/carousel','0'],
             ['false','工具集','/system/utils','0']

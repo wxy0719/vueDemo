@@ -15,7 +15,7 @@
     },
     methods : {
       getData() {
-        var chart_ = new iChart.Bar2D({
+        var chart_ = new iChart.Donut2D({
           render : this.dataObj.id,  //图表的id
           data: this.dataObj.dataList,  //数据源
           title : {
@@ -59,30 +59,6 @@
   				shadow_offsetx : (this.dataObj.shadowOffsetx == null||this.dataObj.shadowOffsetx == "") ? 0 : this.dataObj.shadowOffsetx*1,
   				shadow_offsety : (this.dataObj.shadowOffsety == null||this.dataObj.shadowOffsety == "") ? 0 : this.dataObj.shadowOffsety*1,
   				column_width : (this.dataObj.columnWidth == null||this.dataObj.columnWidth == "") ? 60 : this.dataObj.columnWidth*1,
-					coordinate:{
-            offsetx : (this.dataObj.coordinate.offsetx == null||this.dataObj.coordinate.offsetx == "") ? 0 : this.dataObj.coordinate.offsetx*1,  //图表左侧的偏移量
-            offsety : (this.dataObj.coordinate.offsety == null||this.dataObj.coordinate.offsety == "") ? 0 : this.dataObj.coordinate.offsety*1,  //图表上侧的偏移量
-						background_color : (this.dataObj.coordinate.bgColor == null||this.dataObj.coordinate.bgColor == "") ? '#ffffff' : this.dataObj.coordinate.bgColor,  //图表内的背景颜色
-  					width : (this.dataObj.coordinate.width == null||this.dataObj.coordinate.width == "") ? 350 : this.dataObj.coordinate.width*1,  //图表内的宽度
-  					height : (this.dataObj.coordinate.height == null||this.dataObj.coordinate.height == "") ? 650 : this.dataObj.coordinate.height*1,  //图表内的高度
-  					grid_color : (this.dataObj.coordinate.gridColor == null||this.dataObj.coordinate.gridColor == "") ? '#cccccc' : this.dataObj.coordinate.gridColor,    //图表横水平线的颜色
-  					axis:{
-  						color : (this.dataObj.coordinate.axis == null||this.dataObj.coordinate.axis.color == null||this.dataObj.coordinate.axis.color == "") ? '#696969' : this.dataObj.coordinate.axis.color,
-  						width : (this.dataObj.coordinate.axis == null||this.dataObj.coordinate.axis.width == null||this.dataObj.coordinate.axis.width == "") ? [0,0,0,1] : this.dataObj.coordinate.axis.width,
-  					},   //图表四周边框的颜色和宽度
-						scale:[{
-							 position : (this.dataObj.coordinate.scale == null||this.dataObj.coordinate.scale.position == null||this.dataObj.coordinate.scale.position == "") ? 'left' : this.dataObj.coordinate.scale.position,    //图表数据尺度的位置，左或右
-							 start_scale : (this.dataObj.coordinate.scale == null||this.dataObj.coordinate.scale.startScale == null||this.dataObj.coordinate.scale.startScale == "") ? 0 : this.dataObj.coordinate.scale.startScale*1,   //尺度起始数据
-							 end_scale : (this.dataObj.coordinate.scale == null||this.dataObj.coordinate.scale.endScale == null||this.dataObj.coordinate.scale.endScale == "") ? 100 : this.dataObj.coordinate.scale.endScale*1,   //尺度终止数据
-							 scale_space : (this.dataObj.coordinate.scale == null||this.dataObj.coordinate.scale.scaleSpace == null||this.dataObj.coordinate.scale.scaleSpace == "") ? 5 : this.dataObj.coordinate.scale.scaleSpace*1,   //尺度之间的跨度
-               label : {color:this.dataObj.coordinate.scale.label.color},   //尺度的字体颜色
-							 listeners:{ //修饰尺度的文字
-								parseText:function(t,x,y){
-                  return {text:t}
-								}
-							}
-						}]
-          },
           label:{
             color : (this.dataObj.label.color == null||this.dataObj.label.color == "") ? '#696969' : this.dataObj.label.color, //图表轴上的字体颜色
             fontsize : (this.dataObj.label.fontsize == null||this.dataObj.label.fontsize == "") ? 12 : this.dataObj.label.fontsize*1,
@@ -135,47 +111,32 @@
         });
 
         /**
-  			 *利用自定义组件构造右侧说明文本。
+  			 *利用自定义组件构造左侧说明文本。
   			 */
         var ltObj=this.dataObj.lefttitle
-        var lttObj=this.dataObj.leftToptitle
-        chart_.plugin(new iChart.Custom({
-            drawFn:function(){
-              //计算位置
-              var coo = chart_.getCoordinate(),
-                x = coo.get('originx'),
-                y = coo.get('originy'),
-                H = coo.height;
+ 				chart_.plugin(new iChart.Custom({
+ 						drawFn:function(){
+ 							//计算位置
+ 							var y = chart_.get('originy'),
+ 								w = chart_.get('width');
+
               if(ltObj!=null){
-                //在左侧的位置，设置逆时针90度的旋转，渲染文字。
+   							//在右侧的位置，渲染说明文字
                 chart_.target.textAlign((ltObj.textAlign == null||ltObj.textAlign == "") ? 'center' : ltObj.textAlign)
                 .textBaseline((ltObj.textBaseline == null||ltObj.textBaseline == "") ? 'middle' : ltObj.textBaseline)
                 .textFont((ltObj.textFont == null||ltObj.textFont == "") ? '微软雅黑' : ltObj.textFont)
-                .fillText(
+   							.fillText(
                   (ltObj.text == null||ltObj.text == "") ? null : ltObj.text,  //文本
-                  (ltObj.offsetx == null||ltObj.offsetx == "") ? x-40 : x-ltObj.offsetx*1,   //左偏移量
-                  (ltObj.offsety == null||ltObj.offsety == "") ? y+H/2 : x-ltObj.offsety*1,   //上偏移量
+                  (ltObj.offsetx == null||ltObj.offsetx == "") ? w-220 : w-ltObj.offsetx*1,   //左偏移量
+                  (ltObj.offsety == null||ltObj.offsety == "") ? y-40 : y-ltObj.offsety*1,   //上偏移量
                   false,
                   (ltObj.textColor == null||ltObj.textColor == "") ? '#696969' : ltObj.textColor,
                   false,
-                  false,
-                  false,
-                  (ltObj.rotate == null||ltObj.rotate == "") ? -90 : x-ltObj.rotate*1);
+                  (ltObj.lineHeight == null||ltObj.lineHeight == "") ? 20 : ltObj.lineHeight*1
+                );
               }
-              if(lttObj!=null){
-                //在右下角，渲染一个单位的文字
-                chart_.target.textAlign((lttObj.textAlign == null||lttObj.textAlign == "") ? 'start' : lttObj.textAlign)
-                .textBaseline((lttObj.textBaseline == null||lttObj.textBaseline == "") ? 'bottom' : lttObj.textBaseline)
-                .textFont((lttObj.textFont == null||lttObj.textFont == "") ? '600 13px Verdana' : lttObj.textFont)
-                .fillText(
-                  (lttObj.text == null||lttObj.text == "") ? null : lttObj.text,
-                  (lttObj.offsetx == null||lttObj.offsetx == "") ? x-40 : x-lttObj.offsetx*1,   //左偏移量,
-                  (lttObj.offsety == null||lttObj.offsety == "") ? y-10 : y-lttObj.offsety*1,   //左偏移量
-                  false,
-                  (lttObj.textColor == null||lttObj.textColor == "") ? '#696969' : lttObj.textColor,);
-              }
-            }
-        }));
+ 						}
+ 				}));
 
         chart_.draw()
       }

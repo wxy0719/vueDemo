@@ -15,7 +15,7 @@
     },
     methods : {
       getData() {
-        var chart_ = new iChart.Bar2D({
+        var chart_ = new iChart.Column3D({
           render : this.dataObj.id,  //图表的id
           data: this.dataObj.dataList,  //数据源
           title : {
@@ -135,7 +135,7 @@
         });
 
         /**
-  			 *利用自定义组件构造右侧说明文本。
+  			 *利用自定义组件构造左侧说明文本。
   			 */
         var ltObj=this.dataObj.lefttitle
         var lttObj=this.dataObj.leftToptitle
@@ -154,16 +154,16 @@
                 .fillText(
                   (ltObj.text == null||ltObj.text == "") ? null : ltObj.text,  //文本
                   (ltObj.offsetx == null||ltObj.offsetx == "") ? x-40 : x-ltObj.offsetx*1,   //左偏移量
-                  (ltObj.offsety == null||ltObj.offsety == "") ? y+H/2 : x-ltObj.offsety*1,   //上偏移量
+                  y+H/2,  //上偏移量
                   false,
                   (ltObj.textColor == null||ltObj.textColor == "") ? '#696969' : ltObj.textColor,
                   false,
                   false,
                   false,
-                  (ltObj.rotate == null||ltObj.rotate == "") ? -90 : x-ltObj.rotate*1);
+                  -90);
               }
               if(lttObj!=null){
-                //在右下角，渲染一个单位的文字
+                //在左上角，渲染一个单位的文字
                 chart_.target.textAlign((lttObj.textAlign == null||lttObj.textAlign == "") ? 'start' : lttObj.textAlign)
                 .textBaseline((lttObj.textBaseline == null||lttObj.textBaseline == "") ? 'bottom' : lttObj.textBaseline)
                 .textFont((lttObj.textFont == null||lttObj.textFont == "") ? '600 13px Verdana' : lttObj.textFont)

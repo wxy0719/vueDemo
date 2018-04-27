@@ -49,6 +49,7 @@
             offsetx: (this.dataObj.footnote==null||this.dataObj.footnote.offsetx == null||this.dataObj.footnote.offsetx == "") ? 0 : this.dataObj.footnote.offsetx*1,
             offsety: (this.dataObj.footnote==null||this.dataObj.footnote.offsety == null||this.dataObj.footnote.offsety == "") ? 0 : this.dataObj.footnote.offsety*1
   				},  //图表的脚注
+          animation : (this.dataObj.animation == null||this.dataObj.animation == "") ? false : this.dataObj.animation,  //是否显示动画效果
 					showpercent : (this.dataObj.showpercent == null||this.dataObj.showpercent == "") ? false : this.dataObj.showpercent,  //是否显示百分比
 					decimalsnum : (this.dataObj.decimalsnum == null||this.dataObj.decimalsnum == "") ? 2 : this.dataObj.decimalsnum*1,   //百分比的小数位
 					width : (this.dataObj.width == null||this.dataObj.width == "") ? 800 : this.dataObj.width*1,   //图表的宽度

@@ -15,7 +15,8 @@
     },
     methods : {
       getData() {
-        var chart_ = new iChart.Bar2D({
+        var parseBlank = (this.dataObj.parseBlank == null||this.dataObj.parseBlank == "") ? false : this.dataObj.parseBlank
+        var chart_ = new iChart.Area2D({
           render : this.dataObj.id,  //图表的id
           data: this.dataObj.dataList,  //数据源
           title : {
@@ -71,18 +72,47 @@
   						width : (this.dataObj.coordinate.axis == null||this.dataObj.coordinate.axis.width == null||this.dataObj.coordinate.axis.width == "") ? [0,0,0,1] : this.dataObj.coordinate.axis.width,
   					},   //图表四周边框的颜色和宽度
 						scale:[{
-							 position : (this.dataObj.coordinate.scale == null||this.dataObj.coordinate.scale.position == null||this.dataObj.coordinate.scale.position == "") ? 'left' : this.dataObj.coordinate.scale.position,    //图表数据尺度的位置，左或右
-							 start_scale : (this.dataObj.coordinate.scale == null||this.dataObj.coordinate.scale.startScale == null||this.dataObj.coordinate.scale.startScale == "") ? 0 : this.dataObj.coordinate.scale.startScale*1,   //尺度起始数据
-							 end_scale : (this.dataObj.coordinate.scale == null||this.dataObj.coordinate.scale.endScale == null||this.dataObj.coordinate.scale.endScale == "") ? 100 : this.dataObj.coordinate.scale.endScale*1,   //尺度终止数据
-							 scale_space : (this.dataObj.coordinate.scale == null||this.dataObj.coordinate.scale.scaleSpace == null||this.dataObj.coordinate.scale.scaleSpace == "") ? 5 : this.dataObj.coordinate.scale.scaleSpace*1,   //尺度之间的跨度
-               label : {color:this.dataObj.coordinate.scale.label.color},   //尺度的字体颜色
-							 listeners:{ //修饰尺度的文字
-								parseText:function(t,x,y){
-                  return {text:t}
-								}
-							}
-						}]
+  							 position : (this.dataObj.coordinate.scale[0] == null||this.dataObj.coordinate.scale[0].position == null||this.dataObj.coordinate.scale[0].position == "") ? 'left' : this.dataObj.coordinate.scale[0].position,    //图表数据尺度的位置，左或右
+  							 start_scale : (this.dataObj.coordinate.scale[0] == null||this.dataObj.coordinate.scale[0].startScale == null||this.dataObj.coordinate.scale[0].startScale == "") ? 0 : this.dataObj.coordinate.scale[0].startScale*1,   //尺度起始数据
+  							 end_scale : (this.dataObj.coordinate.scale[0] == null||this.dataObj.coordinate.scale[0].endScale == null||this.dataObj.coordinate.scale[0].endScale == "") ? 100 : this.dataObj.coordinate.scale[0].endScale*1,   //尺度终止数据
+  							 scale_space : (this.dataObj.coordinate.scale[0] == null||this.dataObj.coordinate.scale[0].scaleSpace == null||this.dataObj.coordinate.scale[0].scaleSpace == "") ? 5 : this.dataObj.coordinate.scale[0].scaleSpace*1,   //尺度之间的跨度
+                 label : {
+                    color:(this.dataObj.coordinate.scale[0] == null||this.dataObj.coordinate.scale[0].label == null||this.dataObj.coordinate.scale[0].label.color == "") ? '#ffffff' : this.dataObj.coordinate.scale[0].label.color
+                 },   //尺度的字体颜色
+  							 listeners:{ //修饰尺度的文字
+  								  parseText:function(t,x,y){
+                      return {text:t}
+  								  }
+  							 }
+						  },
+              {
+                  position : (this.dataObj.coordinate.scale[1] == null||this.dataObj.coordinate.scale[1].position == null||this.dataObj.coordinate.scale[1].position == "") ? 'left' : this.dataObj.coordinate.scale[1].position,    //图表数据尺度的位置，左或右
+                  label : {
+                     color:(this.dataObj.coordinate.scale[1] == null||this.dataObj.coordinate.scale[1].label == null||this.dataObj.coordinate.scale[1].label.color == "") ? '#ffffff' : this.dataObj.coordinate.scale[1].label.color
+                  },   //尺度的字体颜色
+                  labels:this.dataObj.labels,
+                  listeners:{ //修饰尺度的文字
+                    parseText:function(t,x,y){
+                       return {text:t}
+                    }
+                  }
+              }
+            ]
           },
+          listeners:{
+    				/**
+    				* d:相当于data[0],即是一个线段的对象
+    				* v:相当于data[0].value
+    				* x:计算出来的横坐标
+    				* x:计算出来的纵坐标
+    				* j:序号 从0开始
+    				*/
+    				parsePoint:function(d,v,x,y,j){
+    					//利用序号进行过滤春节休息期间
+    					if(parseBlank&&(v==0))
+    					return {ignored:true}//ignored为true表示忽略该点
+    				}
+    			},
           label:{
             color : (this.dataObj.label.color == null||this.dataObj.label.color == "") ? '#696969' : this.dataObj.label.color, //图表轴上的字体颜色
             fontsize : (this.dataObj.label.fontsize == null||this.dataObj.label.fontsize == "") ? 12 : this.dataObj.label.fontsize*1,
@@ -94,6 +124,8 @@
           },
   				background_color : (this.dataObj.backgroundColor == null||this.dataObj.backgroundColor == "") ? '#ffffff' : this.dataObj.backgroundColor,   //图表背景颜色
   				sub_option:{  //修饰柱状图上的文字描述
+            smooth : (this.dataObj.sub_option == null||this.dataObj.sub_option.smooth == null||this.dataObj.sub_option.smooth== "") ? false : this.dataObj.sub_option.smooth,//平滑曲线
+            point_size: (this.dataObj.sub_option == null||this.dataObj.sub_option.pointSize == null||this.dataObj.sub_option.pointSize== "") ? 10 : this.dataObj.sub_option.pointSize*1,
             label : {
               fontsize:(this.dataObj.sub_option == null||this.dataObj.sub_option.label == null||this.dataObj.sub_option.label.fontsize == ""||this.dataObj.sub_option.label.fontsize == null) ? 11 : this.dataObj.sub_option.label.fontsize*1,
               fontweight:(this.dataObj.sub_option == null||this.dataObj.sub_option.label == null||this.dataObj.sub_option.label.fontweight == ""||this.dataObj.sub_option.label.fontweight == null) ? 600 : this.dataObj.sub_option.label.fontweight*1,
@@ -110,6 +142,10 @@
   						}
   					}
   				},
+          crosshair:{
+    				enable:(this.dataObj.crosshair == null||this.dataObj.crosshair.enable == null||this.dataObj.crosshair.enable == "") ? false : this.dataObj.crosshair.enable,
+    				line_color:(this.dataObj.crosshair == null||this.dataObj.crosshair.color == null||this.dataObj.crosshair.color == "") ? '#62bce9' : this.dataObj.crosshair.color,
+    			},
   				tip:{
             enable:(this.dataObj.tip == null||this.dataObj.tip.enable == null||this.dataObj.tip.enable == "") ? false : this.dataObj.tip.enable,
             listeners:{
@@ -131,11 +167,17 @@
             enable:(this.dataObj.legend == null||this.dataObj.legend.enable == null||this.dataObj.legend.enable == "") ? false : this.dataObj.legend.enable,
             offsetx:(this.dataObj.legend == null||this.dataObj.legend.offsetx == null||this.dataObj.legend.offsetx == "") ? 0 : this.dataObj.legend.offsetx*1,
             offsety:(this.dataObj.legend == null||this.dataObj.legend.offsety == null||this.dataObj.legend.offsety == "") ? 0 : this.dataObj.legend.offsety*1,
+            row:1,//设置在一行上显示，与column配合使用
+						column : 'max',
+            valign:'top',
+						sign:'bar',
+            background_color:null,//设置透明背景
+            border : true
           }    //图表是否有小项目框
         });
 
         /**
-  			 *利用自定义组件构造右侧说明文本。
+  			 *利用自定义组件构造左侧说明文本。
   			 */
         var ltObj=this.dataObj.lefttitle
         var lttObj=this.dataObj.leftToptitle
@@ -154,16 +196,16 @@
                 .fillText(
                   (ltObj.text == null||ltObj.text == "") ? null : ltObj.text,  //文本
                   (ltObj.offsetx == null||ltObj.offsetx == "") ? x-40 : x-ltObj.offsetx*1,   //左偏移量
-                  (ltObj.offsety == null||ltObj.offsety == "") ? y+H/2 : x-ltObj.offsety*1,   //上偏移量
+                  y+H/2,  //上偏移量
                   false,
                   (ltObj.textColor == null||ltObj.textColor == "") ? '#696969' : ltObj.textColor,
                   false,
                   false,
                   false,
-                  (ltObj.rotate == null||ltObj.rotate == "") ? -90 : x-ltObj.rotate*1);
+                  -90);
               }
               if(lttObj!=null){
-                //在右下角，渲染一个单位的文字
+                //在左上角，渲染一个单位的文字
                 chart_.target.textAlign((lttObj.textAlign == null||lttObj.textAlign == "") ? 'start' : lttObj.textAlign)
                 .textBaseline((lttObj.textBaseline == null||lttObj.textBaseline == "") ? 'bottom' : lttObj.textBaseline)
                 .textFont((lttObj.textFont == null||lttObj.textFont == "") ? '600 13px Verdana' : lttObj.textFont)

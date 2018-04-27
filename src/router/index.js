@@ -27,6 +27,9 @@ export default new Router({
         {path:'layer',component:resolve => require(['@/page/system/layer'],resolve)},
         {path:'chart1',component:resolve => require(['@/page/system/chart1'],resolve)},
         {path:'chart2',component:resolve => require(['@/page/system/chart2'],resolve)},
+        {path:'chart3',component:resolve => require(['@/page/system/chart3'],resolve)},
+        {path:'chart4',component:resolve => require(['@/page/system/chart4'],resolve)},
+        {path:'chart5',component:resolve => require(['@/page/system/chart5'],resolve)},
         {path:'fileUpLoad',component:resolve => require(['@/page/system/fileUpLoad'],resolve)},
         {path:'carousel',component:resolve => require(['@/page/system/carousel'],resolve)},
         {path:'utils',component:resolve => require(['@/page/system/utils'],resolve)}

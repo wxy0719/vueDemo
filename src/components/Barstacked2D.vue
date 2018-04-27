@@ -15,9 +15,10 @@
     },
     methods : {
       getData() {
-        var chart_ = new iChart.Bar2D({
+        var chart_ = new iChart.BarStacked2D({
           render : this.dataObj.id,  //图表的id
           data: this.dataObj.dataList,  //数据源
+          labels: this.dataObj.labels,
           title : {
   					text : (this.dataObj.title==null||this.dataObj.title.text == null||this.dataObj.title.text == "") ? null : this.dataObj.title.text,
   					color : (this.dataObj.title==null||this.dataObj.title.textColor == null||this.dataObj.title.textColor == "") ? '#696969' : this.dataObj.title.textColor,
