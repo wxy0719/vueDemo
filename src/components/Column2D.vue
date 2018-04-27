@@ -1,5 +1,8 @@
 <template>
+<div>
   <div :id="dataObj.id"></div>
+  <button @click="changeSize">改变图表尺寸</button>
+</div>
 </template>
 
 <script>
@@ -14,7 +17,17 @@
       this.getData()
     },
     methods : {
+    changeSize (){
+    console.log(window.$)
+      var chart = window.$.get('column2dTest');//根据ID获取图表对象
+      console.log(chart)
+      chart.push("column_width",null);//设置为null则每次重新计算柱子宽度
+      var w = 500
+      var h = 200
+      chart.resize(w,h);
+    },
       getData() {
+        var ts_ = this
         var chart_ = new iChart.Column2D({
           render : this.dataObj.id,  //图表的id
           data: this.dataObj.dataList,  //数据源
@@ -107,6 +120,15 @@
   					listeners:{
   						parseText:function(r,t){
   							return t+"";
+  						},
+              /**
+  						 * r:iChart对象
+  						 * e:eventObject对象
+  						 * m:额外参数
+  						 */
+              click:function(r,e,m){
+                //调用父级方法，并传值给父级组件
+                ts_.$emit('p_method', r.get('name')+' '+r.get('value'))
   						}
   					}
   				},

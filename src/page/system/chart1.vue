@@ -1,6 +1,10 @@
 <template>
   <div>
-    <Column2D :dataObj="dataObj.column2d"></Column2D>
+    <div>
+      2D柱状图点击的值：
+      <input id="ckdMsg" value="" />
+    </div>
+    <Column2D :dataObj="dataObj.column2d" v-on:p_method="showCheckedMsg"></Column2D>
     <ColumnMulti2D :dataObj="dataObj.columnMulti2D"></ColumnMulti2D>
     <ColumnStacked2D :dataObj="dataObj.columnStacked2D"></ColumnStacked2D>
 
@@ -657,6 +661,19 @@ export default {
   },
   methods : {
     getData () {
+
+    },
+    showCheckedMsg (msg){
+      $("#ckdMsg").val(msg)
+    },
+    changeSize (){
+      var chart = $.get('column2dTest');//根据ID获取图表对象
+      chart.push("column_width",null);//设置为null则每次重新计算柱子宽度
+      var w = 500
+      var h = 200
+      chart.resize(w,h);
+    },
+    changeData (){
 
     }
   }
