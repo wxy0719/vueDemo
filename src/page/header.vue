@@ -8,7 +8,7 @@
         <li class="layui-nav-item" style="width:70px;"><a href="">用户</a></li>
         <li class="layui-nav-item" style="width:90px;">
             <a href="javascript:;">其它系统</a>
-            <dl class="layui-nav-child">
+            <dl class="layui-nav-child" style="width:80px;">
                 <dd style="margin-left:5px;"><a href="">邮件管理</a></dd>
                 <dd style="margin-left:5px;"><a href="">消息管理</a></dd>
                 <dd style="margin-left:5px;"><a href="">授权管理</a></dd>
