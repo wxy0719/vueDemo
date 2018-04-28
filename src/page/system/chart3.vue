@@ -57,7 +57,7 @@ export default {
             'offsetx':'320',
             'offsety':'10'
           },//图表的脚注
-          'animation' : true,  //动画效果
+          'animation' : false,  //动画效果
           'showpercent' : true, //是否显示百分比
           'decimalsnum' : 2,//百分比的小数位
           'width' : 800, //图表的宽度
@@ -140,7 +140,7 @@ export default {
             'offsetx':'320',
             'offsety':'10'
           },//图表的脚注
-          'animation' : true,  //动画效果
+          'animation' : false,  //动画效果
           'showpercent' : true, //是否显示百分比
           'decimalsnum' : 2,//百分比的小数位
           'width' : 800, //图表的宽度
@@ -223,7 +223,7 @@ export default {
             'offsetx':'320',
             'offsety':'10'
           },//图表的脚注
-          'animation' : true,  //动画效果
+          'animation' : false,  //动画效果
           'showpercent' : true, //是否显示百分比
           'decimalsnum' : 2,//百分比的小数位
           'width' : 800, //图表的宽度
