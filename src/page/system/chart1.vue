@@ -3,6 +3,10 @@
     <div>
       2D柱状图点击的值：
       <input id="ckdMsg" value="" />
+      <br/>
+      <button @click="changeSize_p">改变图表尺寸</button>
+      <br/>
+      <button @click="changeData">改变图表数据</button>
     </div>
     <Column2D :dataObj="dataObj.column2d" v-on:p_method="showCheckedMsg"></Column2D>
     <ColumnMulti2D :dataObj="dataObj.columnMulti2D"></ColumnMulti2D>
@@ -76,7 +80,7 @@ export default {
             'offsetx':'320',
             'offsety':'10'
           },//图表的脚注
-          'animation' : true,  //动画效果
+          'animation' : false,  //动画效果
           'showpercent' : true, //是否显示百分比
           'decimalsnum' : 2,//百分比的小数位
           'width' : 800, //图表的宽度
@@ -179,7 +183,7 @@ export default {
             'offsetx':'320',
             'offsety':'10'
           },//图表的脚注
-          'animation' : true,  //动画效果
+          'animation' : false,  //动画效果
           'showpercent' : false, //是否显示百分比
           'decimalsnum' : 2,//百分比的小数位
           'width' : 800, //图表的宽度
@@ -283,7 +287,7 @@ export default {
             'offsetx':'320',
             'offsety':'10'
           },//图表的脚注
-          'animation' : true,  //动画效果
+          'animation' : false,  //动画效果
           'showpercent' : false, //是否显示百分比
           'decimalsnum' : 2,//百分比的小数位
           'width' : 800, //图表的宽度
@@ -389,7 +393,7 @@ export default {
             'offsetx':'320',
             'offsety':'10'
           },//图表的脚注
-          'animation' : true,  //动画效果
+          'animation' : false,  //动画效果
           'showpercent' : true, //是否显示百分比
           'decimalsnum' : 2,//百分比的小数位
           'width' : 800, //图表的宽度
@@ -492,7 +496,7 @@ export default {
             'offsetx':'320',
             'offsety':'10'
           },//图表的脚注
-          'animation' : true,  //动画效果
+          'animation' : false,  //动画效果
           'showpercent' : false, //是否显示百分比
           'decimalsnum' : 2,//百分比的小数位
           'width' : 800, //图表的宽度
@@ -596,7 +600,7 @@ export default {
             'offsetx':'320',
             'offsety':'10'
           },//图表的脚注
-          'animation' : true,  //动画效果
+          'animation' : false,  //动画效果
           'showpercent' : false, //是否显示百分比
           'decimalsnum' : 2,//百分比的小数位
           'width' : 800, //图表的宽度
@@ -666,15 +670,24 @@ export default {
     showCheckedMsg (msg){
       $("#ckdMsg").val(msg)
     },
-    changeSize (){
-      var chart = $.get('column2dTest');//根据ID获取图表对象
-      chart.push("column_width",null);//设置为null则每次重新计算柱子宽度
-      var w = 500
-      var h = 200
+    changeSize_p (){
+      var chart = iChart.get("column2dTest");//根据ID获取图表对象
+      var w = 800
+      var h = 400
       chart.resize(w,h);
     },
     changeData (){
+      var chart = iChart.get("column2dTest");//根据ID获取图表对象
+      var d = [
+        {name : 'IE',value : Math.floor(Math.random()*40)+10,color:'#a5c2d5'},
+        {name : 'Chrome',value : Math.floor(Math.random()*40)+10,color:'#cbab4f'},
+        {name : 'Firefox',value : Math.floor(Math.random()*40)+10,color:'#76a871'},
+        {name : 'Safari',value : Math.floor(Math.random()*40)+10,color:'#9f7961'},
+        {name : 'Opera',value : Math.floor(Math.random()*40)+10,color:'#a56f8f'},
+        {name : 'Other',value : Math.floor(Math.random()*40)+10,color:'#6f83a5'}
+      ]
 
+      chart.load(d);//载入新数据
     }
   }
 }
