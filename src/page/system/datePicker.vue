@@ -1,5 +1,8 @@
 <template>
   <div>
+
+
+<!--
     <fieldset class="layui-elem-field layui-field-title" style="margin-top: 30px;">
     <legend>常规用法</legend>
     </fieldset>
@@ -54,7 +57,7 @@
     </div>
     </div>
 
-    <!-- 示例-970 -->
+
     <ins class="adsbygoogle" style="display:inline-block;width:970px;height:90px" data-ad-client="ca-pub-6111334333458862" data-ad-slot="3820120620"></ins>
 
 
@@ -194,24 +197,6 @@
     </div>
 
     <fieldset class="layui-elem-field layui-field-title" style="margin-top: 30px;">
-    <legend>同时绑定多个</legend>
-    </fieldset>
-
-    <div class="layui-form">
-    <div class="layui-form-item">
-      <div class="layui-inline">
-        <input type="text" class="layui-input test-item" placeholder="yyyy-MM-dd">
-      </div>
-      <div class="layui-inline">
-        <input type="text" class="layui-input test-item" placeholder="yyyy-MM-dd">
-      </div>
-      <div class="layui-inline">
-        <input type="text" class="layui-input test-item" placeholder="yyyy-MM-dd">
-      </div>
-    </div>
-    </div>
-
-    <fieldset class="layui-elem-field layui-field-title" style="margin-top: 30px;">
     <legend>其它功能示例</legend>
     </fieldset>
 
@@ -318,17 +303,60 @@
     <div class="layui-inline" id="test-n3"></div>
     <div class="layui-inline" id="test-n4"></div>
     </div>
+-->
+    <datePicker id="ttt"></datePicker>
+
+    <datePicker
+      :id="id"
+      :lang="lang"
+      :type="type"
+      :range="range"
+      :placeholder="placeholder"
+      :format="format"
+      :calendar="calendar"
+      :mark="mark"
+      :min="min"
+      :max="max"
+      :showBottom="showBottom"
+      :btns="btns"
+      :theme="theme"
+      :position="position"
+      :isInitValue="isInitValue"
+      :timeDefault="timeDefault"
+    ></datePicker>
   </div>
 </template>
 
 <script>
-
+import datePicker from '../../components/datePicker.vue'
 
 export default {
-  components: {},
+  components: {datePicker},
   data () {
     return {
-
+      'id' : 'test999',
+      'lang' : 'cn',
+      'type' : 'datetime',
+      'range' : false,
+      'placeholder' : 'yyyy年MM月dd日 HH时mm分ss秒',
+      'format' : 'yyyy年MM月dd日 HH时mm分ss秒',
+      'calendar' : true,
+      'mark' : {
+        '0-10-14': '生日'
+        ,'0-12-31': '跨年' //每年的日期
+        ,'0-5-10': '工资' //每月某天
+        ,'0-0-15': '月中'
+        ,'2017-8-15': '' //如果为空字符，则默认显示数字+徽章
+        ,'2099-10-14': '呵呵'
+      },
+      min: '2018-04-14' ,
+      max: '2018-05-24' ,
+      showBottom: true ,
+      btns: ['clear', 'confirm'] ,
+      theme: 'molv' ,
+      position: '',
+      isInitValue : true,
+      timeDefault : '2018年05月10日 17时51分00秒'
     }
   },
   created () {

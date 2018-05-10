@@ -19,7 +19,7 @@
   }
 
   ,Layui = function(){
-    this.v = '2.2.6'; //版本号
+    this.v = '2.3.0-rc1'; //版本号
   }
 
   //获取layui所在目录
@@ -59,9 +59,10 @@
     ,tree: 'modules/tree' //树结构
     ,table: 'modules/table' //表格
     ,element: 'modules/element' //常用元素操作
-    ,util: 'modules/util' //工具块
-    ,flow: 'modules/flow' //流加载
+    ,rate: 'modules/rate'  //评分组件
     ,carousel: 'modules/carousel' //轮播
+    ,flow: 'modules/flow' //流加载
+    ,util: 'modules/util' //工具块
     ,code: 'modules/code' //代码修饰器
     ,jquery: 'modules/jquery' //DOM库（第三方）
 
@@ -164,7 +165,6 @@
     if(!config.modules[item]){
     */
       var node = doc.createElement('script')
-
       //如果是内置模块，则按照 dir 参数拼接模块路径
       //如果是扩展模块，则判断模块路径值是否为 {/} 开头，
       //如果路径值是 {/} 开头，则模块路径即为后面紧跟的字符。
@@ -197,7 +197,7 @@
       }
 
       config.modules[item] = url;
-      
+
     /** 去掉缓存
     } else { //缓存
       (function poll() {
@@ -281,11 +281,11 @@
     }
     img.onload = function(){
       img.onload = null;
-      callback(img);
+      typeof callback === 'function' && callback(img);
     };
     img.onerror = function(e){
       img.onerror = null;
-      error(e);
+      typeof error === 'function' && error(e);
     };
   };
 

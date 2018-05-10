@@ -153,6 +153,16 @@ jQuery.fn = jQuery.prototype = {
 	// The default length of a jQuery object is 0
 	length: 0,
 
+	//判断:当前元素是否是被筛选元素的子元素
+	isChildOf : function(b){
+		return (this.parents(b).length > 0);
+	},
+
+	//判断:当前元素是否是被筛选元素的子元素或者本身
+	isChildAndSelfOf : function(b){
+		return (this.closest(b).length > 0);
+	},
+
 	toArray: function() {
 		return slice.call( this );
 	},

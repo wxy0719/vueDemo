@@ -431,6 +431,7 @@ layui.define('jquery', function(exports){
       //折叠面板
       ,collapse: function(){
         var ELEM = 'layui-collapse';
+
         $('.' + ELEM + elemFilter).each(function(){
           var elemItem = $(this).find('.layui-colla-item')
           elemItem.each(function(){
