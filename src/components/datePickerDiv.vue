@@ -1,6 +1,5 @@
 <template>
-  <input type="text" class="layui-input" :id="id" :class="class_" :width="width" :style="style_"
-    :height="height" :placeholder="placeholder" :value="timeDefault" :readonly="readonly">
+  <div class="layui-inline" :id="id" :class="class_" :width="width" :height="height" :style="style_"></div>
 </template>
 
 <script>

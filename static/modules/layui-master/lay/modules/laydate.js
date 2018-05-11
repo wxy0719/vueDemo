@@ -495,8 +495,9 @@
 
     //设置唯一KEY
     if(!options.elem.attr('lay-key')){
-      options.elem.attr('lay-key', that.index);
-      options.eventElem.attr('lay-key', that.index);
+      var guid_=$().guid();
+      options.elem.attr('lay-key', guid_);
+      options.eventElem.attr('lay-key', guid_);
     }
 
     //记录重要日期
@@ -1803,8 +1804,7 @@
         if(!$(e.target).isChildAndSelfOf(".layui-laydate")){
           if(e.target === options.elem[0]
           || e.target.id === options.elem[0].id
-          || e.target === options.eventElem[0]
-          || e.target === lay(options.closeStop)[0]){
+          || e.target === options.eventElem[0]){
             return;
           }
           that.remove();
