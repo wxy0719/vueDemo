@@ -29,7 +29,7 @@ export default {
   },
   methods: {
     getData () {
-      this.$index_tableData_api.get('topics?'+Math.random(), null, r => {
+      this.$baseAPI.get('topics?'+Math.random(), null, r => {
         this.data_list = r.data
       })
     }

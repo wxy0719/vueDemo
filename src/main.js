@@ -6,8 +6,8 @@ import router from './router'
 
 // 引用API文件
 // 将API方法绑定到全局
-import index_tableData_api from './api/index_tableData_api.js'
-Vue.prototype.$index_tableData_api = index_tableData_api
+import baseAPI from './api/baseAPI.js'
+Vue.prototype.$baseAPI = baseAPI
 
 // 引用时间格式化工具
 import dateTimeUtils from './utils/dateTimeUtils.js'

@@ -15,7 +15,7 @@
             </dl>
         </li>
     </ul>
-    <ul class="layui-nav layui-layout-right">
+    <ul class="layui-nav layui-layout-right" v-html="loginHtmlText">
         <li class="layui-nav-item">
             <a href="javascript:;">
                 <img src="http://t.cn/RCzsdCq" class="layui-nav-img">
@@ -30,3 +30,37 @@
     </ul>
 </div>
 </template>
+
+<script>
+export default {
+  components: {},
+  props: ['userInfo'],
+  data () {
+    return {
+      loginHtmlText : ""
+    }
+  },
+  created () {
+    this.getData()
+  },
+  methods : {
+    getData () {
+      if(this.userInfo!=null){
+        this.loginHtmlText ="<li class='layui-nav-item'>"+
+                            "      <a href='javascript:;'>"+
+                            "          <img src='http://t.cn/RCzsdCq' class='layui-nav-img'>"+
+                            "          贤心"+
+                            "      </a>"+
+                            "      <dl class='layui-nav-child'>"+
+                            "          <dd><a href=''>基本资料</a></dd>"+
+                            "          <dd><a href=''>安全设置</a></dd>"+
+                            "      </dl>"+
+                            "</li>"+
+                            "<li class='layui-nav-item'><a href=''>退了</a></li>";
+      }else{
+        this.loginHtmlText = "<li class='layui-nav-item'><a href=''>登录</a></li>";
+      }
+    }
+  }
+}
+</script>

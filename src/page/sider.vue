@@ -22,7 +22,7 @@ export default {
   methods : {
     getData () {
       this.dataList = [
-        ['true','子组件样例','javascript:;',
+        ['true','组件样例','javascript:;',
           [
             ['false','数据表格','/system/dataTable','0'],
             ['true','树形菜单','javascript:;','9',[
