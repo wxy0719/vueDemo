@@ -3,7 +3,7 @@
 </template>
 
 <script>
-import blackBoard from '../../components/blackBoard.vue'
+import blackBoard from '../../components/basic/blackBoard.vue'
 
 export default {
   components: {blackBoard},

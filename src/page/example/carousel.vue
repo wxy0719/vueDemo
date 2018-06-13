@@ -9,7 +9,7 @@
 </template>
 
 <script>
-import carousel from '../../components/carousel.vue'
+import carousel from '../../components/basic/carousel.vue'
 
 export default {
   components: {carousel},

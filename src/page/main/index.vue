@@ -1,7 +1,7 @@
 <template>
 <div id="app" class="layui-layout layui-layout-admin">
   <Header :userInfo='userInfo'></Header>
-  <Sider></Sider>
+  <Sider :menuList='menuList'></Sider>
 
   <div class="layui-body">
       <router-view></router-view>
@@ -21,27 +21,30 @@ export default {
   components: {Header, Footer, Sider},
   data() {
     return {
-      userInfo : null
+      userInfo : null,
+      menuList : null
     }
+  },
+  created () {
+    this.getData()
   },
   methods : {
     getData() {
-      localStorage.userId = ""
-      localStorage.esteban_TOKEN = ""
+      localStorage.userId = "admin"
+      localStorage.esteban_TOKEN = "eyd0eXAnOidKV1QnLCdhbGcnOidIUzI1Nid9.eydpc3MnOidlc3RlYmFuJywnc3ViJzonMScsJ2V4cCc6JzE4MDBzJywnaWF0JzonMTUyODc4OTYyODM4OCd9.c12af0adfa0251de36a436948721fb4a"
 
-      //初始化头部用户信息
+      //初始用户信息,左侧菜单信息
       if(localStorage.userId!=null&&localStorage.userId!=""&&localStorage.esteban_TOKEN!=null&&localStorage.esteban_TOKEN!=""){
         let params = {
           token:localStorage.esteban_TOKEN
         }
-        this.$baseAPI.get('interfaceAdapter', params ,10004 ,localStorage.esteban_TOKEN , r => {
-          layer.alert(r.message)
+        this.$baseAPI.get('interfaceAdapter', params ,10004 ,null , r => {
+          this.userInfo = r.userInfo
+          this.menuList = r.menuList
         }, r => {
           layer.alert(r.message)
         })
       }
-
-      //初始化左侧菜单信息
 
       //初始化其他通知类信息
 
@@ -52,5 +55,5 @@ export default {
 </script>
 
 <style>
-  @import "../assets/style/index.css"
+  @import "../../assets/style/index.css"
 </style>

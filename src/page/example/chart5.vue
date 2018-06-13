@@ -4,7 +4,7 @@
   </div>
 </template>
 <script>
-import Area2D from '../../components/Area2D.vue'
+import Area2D from '../../components/basic/Area2D.vue'
 
 
 export default {

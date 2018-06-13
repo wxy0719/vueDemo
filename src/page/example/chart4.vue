@@ -4,7 +4,7 @@
   </div>
 </template>
 <script>
-import Line2D from '../../components/Line2D.vue'
+import Line2D from '../../components/basic/Line2D.vue'
 
 
 export default {

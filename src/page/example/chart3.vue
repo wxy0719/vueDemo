@@ -6,9 +6,9 @@
   </div>
 </template>
 <script>
-import Pie2D from '../../components/Pie2D.vue'
-import Pie3D from '../../components/Pie3D.vue'
-import Donut2D from '../../components/Donut2D.vue'
+import Pie2D from '../../components/basic/Pie2D.vue'
+import Pie3D from '../../components/basic/Pie3D.vue'
+import Donut2D from '../../components/basic/Donut2D.vue'
 
 export default {
   components: {Pie2D,Pie3D,Donut2D},

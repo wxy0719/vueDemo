@@ -18,13 +18,13 @@
   </div>
 </template>
 <script>
-import Column2D from '../../components/Column2D.vue'
-import ColumnMulti2D from '../../components/ColumnMulti2D.vue'
-import ColumnStacked2D from '../../components/ColumnStacked2D.vue'
+import Column2D from '../../components/basic/Column2D.vue'
+import ColumnMulti2D from '../../components/basic/ColumnMulti2D.vue'
+import ColumnStacked2D from '../../components/basic/ColumnStacked2D.vue'
 
-import Column3D from '../../components/Column3D.vue'
-import ColumnMulti3D from '../../components/ColumnMulti3D.vue'
-import ColumnStacked3D from '../../components/ColumnStacked3D.vue'
+import Column3D from '../../components/basic/Column3D.vue'
+import ColumnMulti3D from '../../components/basic/ColumnMulti3D.vue'
+import ColumnStacked3D from '../../components/basic/ColumnStacked3D.vue'
 
 export default {
   components: {Column2D,ColumnMulti2D,ColumnStacked2D,Column3D,ColumnMulti3D,ColumnStacked3D},

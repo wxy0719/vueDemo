@@ -6,9 +6,9 @@
   </div>
 </template>
 <script>
-import Bar2D from '../../components/Bar2D.vue'
-import Barmulti2D from '../../components/Barmulti2D.vue'
-import Barstacked2D from '../../components/Barstacked2D.vue'
+import Bar2D from '../../components/basic/Bar2D.vue'
+import Barmulti2D from '../../components/basic/Barmulti2D.vue'
+import Barstacked2D from '../../components/basic/Barstacked2D.vue'
 
 
 export default {

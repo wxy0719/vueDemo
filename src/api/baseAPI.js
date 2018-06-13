@@ -58,14 +58,13 @@ function apiAxios (method, url, params, success, failure) {
         failure(res.data.data);
       }
     }else{
-      window.alert(JSON.stringify(res.data.message))
-      failure(res.data);
+      console.log(JSON.stringify(res.data.message))
     }
   })
   .catch(function(err){
     let res=err.response
     if(res){
-      window.alert('errro: '+ res.status)
+      console.log('errro: '+ res.data.code)
     }
   })
 }
@@ -74,12 +73,22 @@ function formatData(params,adapterNo,token){
   params = Base64.encode(JSON.stringify(params))
   let timeMills=(new Date(Date.now())).getTime();
   let ticket = md5.hex(timeMills+params)
-  let data = {
-    'adapterNo':adapterNo,
-    'ticket': ticket,
-    'data':params,
-    'time':timeMills,
-    'token':token
+  let data
+  if(token!=null&&token!=""){
+    data = {
+      'adapterNo':adapterNo,
+      'ticket': ticket,
+      'data':params,
+      'time':timeMills,
+      'token':token
+    }
+  }else{
+     data = {
+      'adapterNo':adapterNo,
+      'ticket': ticket,
+      'data':params,
+      'time':timeMills
+    }
   }
   return data
 }

@@ -9,7 +9,7 @@
 </template>
 
 <script>
-import ztree from '../../components/ztree.vue'
+import ztree from '../../components/basic/ztree.vue'
 
 export default {
   components: {ztree},

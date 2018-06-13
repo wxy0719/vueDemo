@@ -3,7 +3,7 @@
 </template>
 
 <script>
-import timeLine from '../../components/timeLine.vue'
+import timeLine from '../../components/basic/timeLine.vue'
 
 export default {
   components: {timeLine},

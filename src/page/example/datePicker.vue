@@ -299,8 +299,8 @@
 </template>
 
 <script>
-import datePicker from '../../components/datePicker.vue'
-import datePickerDiv from '../../components/datePickerDiv.vue'
+import datePicker from '../../components/basic/datePicker.vue'
+import datePickerDiv from '../../components/basic/datePickerDiv.vue'
 
 export default {
   components: {datePicker,datePickerDiv},
