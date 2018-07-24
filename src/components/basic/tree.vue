@@ -45,7 +45,8 @@
         if(localStorage.esteban_TOKEN!=null&&localStorage.esteban_TOKEN!=""){
           let params = {
             parentId:menuId,
-            grade:grade
+            grade:grade,
+            token:localStorage.esteban_TOKEN
           }
           this.$baseAPI.get('interfaceAdapter', params ,10005 ,localStorage.esteban_TOKEN , r => {
             let ml = eval(r.menuList)
@@ -78,7 +79,6 @@
 
             $("#"+menuId).after(htmlStr);
             openedMenu.push(menuId)
-            console.log(ml)
           }, r => {
             layer.alert(r.message)
           })
