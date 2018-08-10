@@ -33,12 +33,23 @@ layui.define('jquery', function(exports){
 
   //外部Tab新增
   Element.prototype.tabAdd = function(filter, options){
+    var titleStr = ""
+    if((options.title.indexOf("<")!=-1)&&(options.title.indexOf("</")!=-1)){
+      var objE = document.createElement("div")
+  　　objE.innerHTML = options.title;
+      titleStr = objE.childNodes[0].innerText
+    }else{
+      titleStr = options.title
+    }
+    let width_ = 0
+    width_ = titleStr.length * 15
+
     var TITLE = '.layui-tab-title'
     ,tabElem = $('.layui-tab[lay-filter='+ filter +']')
     ,titElem = tabElem.children(TITLE)
     ,barElem = titElem.children('.layui-tab-bar')
     ,contElem = tabElem.children('.layui-tab-content')
-    ,li = '<li lay-id="'+ (options.id||'') +'"'
+    ,li = '<li lay-id="'+ (options.id||'') +'" style="width:'+width_+'px !important;" class="tab_nav_class" '
     +(options.attr ? ' lay-attr="'+ options.attr +'"' : '') +'>'+ (options.title||'unnaming') +'</li>';
 
     barElem[0] ? barElem.before(li) : titElem.append(li);

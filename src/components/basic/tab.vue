@@ -1,21 +1,22 @@
 <template>
-  <div :class="t_cssStr" lay-filter="docDemoTabBrief" :lay-allowclose="isClose" style="height: 100%;">
+  <div :class="t_cssStr" lay-filter="docDemoTabBrief" :lay-allowclose="isClose" style="height: 100%;" :lay-filter="tabId">
   <ul class="layui-tab-title">
-    <li v-for="(item, index) in title" :class="[index === 0 ? 'layui-this' : '']">
-      {{ item }}
+    <li v-for="(item, index) in title" :class="[index === 0 ? 'layui-this' : '']" lay-id="home" class="tab_nav_class" v-html="item">
+
     </li>
   </ul>
-  <div class="layui-tab-content" style="height: 100%;">
-    <div v-for="(item, index) in content" :class="[index === 0 ? 'layui-tab-item layui-show' : 'layui-tab-item']" >
-      {{ item }}
-    </div>
+  <div style="padding-top:8px;padding-left:5px;">
+    <keep-alive >
+      <router-view>
+      </router-view>
+    </keep-alive>
   </div>
   </div>
 </template>
 
 <script>
   export default {
-    props: ['title','content','cssStr','isClose'],
+    props: ['title','content','cssStr','isClose','tabId'],
     data() {
       return {
         't_cssStr': 'layui-tab '+this.cssStr

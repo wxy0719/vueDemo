@@ -1,5 +1,4 @@
 <template>
-<div class="layadmin-tabsbody-item layui-show" style="background-color: #f2f2f2;margin-top:50px;">
 <div class="layui-fluid">
 <div class="layui-row layui-col-space15">
   <div class="layui-col-md8">
@@ -178,7 +177,7 @@
           </div>
         </div>
         <div class="layui-card">
-          <div class="layui-tab layui-tab-brief layadmin-latestData">
+          <div class="layui-tab layui-tab-brief layadmin-latestData" style="width: 100%; height: 100%;">
             <ul class="layui-tab-title">
               <li class="layui-this">今日热搜</li>
               <li>今日热帖</li>
@@ -244,7 +243,7 @@
 
     <div class="layui-card">
       <div class="layui-card-header">效果报告</div>
-      <div class="layui-card-body layadmin-takerates">
+      <div class="layui-card-body layadmin-takerates" style="height:100%">
         <div class="layui-progress" lay-showpercent="yes">
           <h3>转化率（日同比 28% <span class="layui-edge layui-edge-top" lay-tips="增长" lay-offset="-15"></span>）</h3>
           <div class="layui-progress-bar" lay-percent="65%" style="width: 65%;"><span class="layui-progress-text">65%</span></div>
@@ -270,52 +269,8 @@
       </div>
     </div>
 
-    <div class="layui-card">
-      <div class="layui-card-header">产品动态</div>
-      <div class="layui-card-body">
-        <div class="layui-carousel layadmin-carousel layadmin-news" data-autoplay="true" data-anim="fade" lay-filter="news" lay-anim="fade" lay-indicator="inside" lay-arrow="none" style="width: 100%; height: 280px;">
-          <div carousel-item="">
-            <div class="layui-this"><a href="http://fly.layui.com/docs/2/" target="_blank" class="layui-bg-red">layuiAdmin 快速上手文档</a></div>
-            <div class=""><a href="javascript:;" onclick="layer.msg('等待添加')" target="_blank" class="layui-bg-green">layuiAdmin 集成心得分享</a></div>
-            <div class=""><a href="javascript:;" onclick="layer.msg('等待添加')" target="_blank" class="layui-bg-blue">首款 layui 官方后台模板系统正式发布</a></div>
-          </div>
-        <div class="layui-carousel-ind"><ul><li class="layui-this"></li><li class=""></li><li class=""></li></ul></div><button class="layui-icon layui-carousel-arrow" lay-type="sub"></button><button class="layui-icon layui-carousel-arrow" lay-type="add"></button></div>
-      </div>
-    </div>
-
-    <div class="layui-card">
-      <div class="layui-card-header">
-        作者心语
-        <i class="layui-icon layui-icon-tips" lay-tips="要支持的噢" lay-offset="5"></i>
-      </div>
-      <div class="layui-card-body layui-text layadmin-text">
-        123456
-      </div>
-    </div>
   </div>
 
 </div>
 </div>
-</div>
 </template>
-
-<script>
-
-
-export default {
-  components: {},
-  data () {
-    return {
-
-    }
-  },
-  created () {
-    this.getData()
-  },
-  methods : {
-    getData () {
-
-    }
-  }
-}
-</script>

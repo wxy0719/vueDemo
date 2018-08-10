@@ -24,7 +24,7 @@ html {
 	top: 0;
 	left: 0;
 	width: 100%;
-	height: 50px
+	height: 70px
 }
 
 .layui-layout-admin .layui-header .layui-nav .layui-nav-child a {
@@ -33,7 +33,7 @@ html {
 
 .layui-layout-admin .layui-side {
 	width: 200px;
-	top: 50px;
+	top: 69px;
 	z-index: 1001
 }
 
@@ -43,12 +43,13 @@ html {
 }
 
 .layui-layout-admin .layui-logo {
+	line-height: 65px;
 	position: fixed;
 	left: 0;
 	top: 0;
 	z-index: 1002;
 	width: 200px;
-	height: 50px;
+	height: 70px;
 	padding: 0 15px;
 	box-sizing: border-box;
 	overflow: hidden;
@@ -58,7 +59,8 @@ html {
 }
 
 .layadmin-pagetabs,.layui-layout-admin .layui-body,.layui-layout-admin .layui-footer,.layui-layout-admin .layui-layout-left {
-	left: 200px
+	left: 205px;
+	right: 5px;
 }
 
 .layadmin-pagetabs {
@@ -605,7 +607,7 @@ html {
 }
 
 .layui-fluid {
-	padding: 15px
+
 }
 
 .layadmin-header {
@@ -759,7 +761,7 @@ html {
 }
 
 .layadmin-dataview {
-	height: 332px!important
+
 }
 
 .layadmin-dataview>[carousel-item]:before {

@@ -1,6 +1,6 @@
 // 配置API接口地址
 //var root = 'https://cnodejs.org/api/v1'
-var root = "http://localhost:8080/esteban_server"
+var root = "http://localhost:8088"
 
 //引用axios
 var axios = require('axios')

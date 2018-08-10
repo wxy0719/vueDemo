@@ -3,7 +3,7 @@
     layui-tab-card  卡片风格
     layui-tab-brief 简洁风格
     -->
-    <tab :title="title" :content="content" :cssStr="card" :isClose="false"></tab>
+    <tab :title="title" :content="content" :cssStr="card" :isClose="true" :tabId="tabId"></tab>
 </template>
 
 <script>
@@ -25,8 +25,15 @@
           '权限分配333',
           '订单管理444'
         ],
-        'card': 'layui-tab-card'
+        'card': 'layui-tab-card',
+        'tabId' : 'demo111'
       }
+    },
+    created () {
+
+    },
+    methods : {
+
     }
 
   }

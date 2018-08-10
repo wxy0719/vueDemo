@@ -12,6 +12,13 @@ export default new Router({
       component: index
     },
     {
+      path: '/home',
+      component: index,
+      children:[
+        {path:'/',component:resolve => require(['@/page/main/home'],resolve)},
+      ]
+    },
+    {
       path: '/example',
       component: index,
       children:[
