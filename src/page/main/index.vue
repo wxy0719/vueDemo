@@ -51,12 +51,10 @@ export default {
         window.location.href = "#/home/"
       }
 
-      localStorage.userId = "admin"
-      localStorage.esteban_TOKEN = "eyd0eXAnOidKV1QnLCdhbGcnOidIUzI1Nid9.eydpc3MnOidlc3RlYmFuJywnc3ViJzonMScsJ2V4cCc6JzE4MDBzJywnaWF0JzonMTUzMzY0MTIwNjY3MCd9.3bafd515b2b69c3a63934dfc0a61af45"
-
       //初始用户信息,左侧菜单信息
       if(localStorage.userId!=null&&localStorage.userId!=""&&localStorage.esteban_TOKEN!=null&&localStorage.esteban_TOKEN!=""){
         let params = {
+          userId:localStorage.userId,
           token:localStorage.esteban_TOKEN
         }
         this.$baseAPI.get('interfaceAdapter', params ,10004 ,null , r => {

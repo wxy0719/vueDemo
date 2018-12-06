@@ -158,6 +158,22 @@ jQuery.fn = jQuery.prototype = {
 		return (this.parents(b).length > 0);
 	},
 
+	serializeObject : function() {  
+    var o = {};
+    var a = this.serializeArray();
+    $.each(a, function() {
+        if (o[this.name]) {
+            if (!o[this.name].push) {
+                o[this.name] = [ o[this.name] ];
+            }
+            o[this.name].push(this.value || '');
+        } else {
+            o[this.name] = this.value || '';
+        }
+    });
+    return o;
+  },
+
 	//判断:当前元素是否是被筛选元素的子元素或者本身
 	isChildAndSelfOf : function(b){
 		return (this.closest(b).length > 0);

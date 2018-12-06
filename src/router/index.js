@@ -12,8 +12,17 @@ export default new Router({
       component: index
     },
     {
+      path: '/login',
+      component: resolve => require(['@/page/main/login'],resolve),
+      keepAlive: false // 不需要缓存
+    },
+    {
       path: '/home',
       component: index,
+      meta: {
+        title: '',
+        requireAuth: true,  // 添加该字段，表示进入这个路由是需要登录的
+      },
       children:[
         {path:'/',component:resolve => require(['@/page/main/home'],resolve)},
       ]
@@ -21,6 +30,10 @@ export default new Router({
     {
       path: '/example',
       component: index,
+      meta: {
+        title: '',
+        requireAuth: true,  // 添加该字段，表示进入这个路由是需要登录的
+      },
       children:[
         {path:'dataTable',component:resolve => require(['@/page/example/dataTable'],resolve)},
         {path:'tree_1',component:resolve => require(['@/page/example/tree_1'],resolve)},
@@ -44,7 +57,11 @@ export default new Router({
     },
     {
       path: '/content/:id',
-      component: content
+      component: content,
+      meta: {
+        title: '',
+        requireAuth: true,  // 添加该字段，表示进入这个路由是需要登录的
+      }
     }
   ]
 })

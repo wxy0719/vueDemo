@@ -58,7 +58,14 @@ export default {
                 "          <dd><a href=''>安全设置</a></dd>"+
                 "      </dl>"+
                 "</li>"+
-                "<li class='layui-nav-item'><a href='' >退出</a></li></ul>"
+                "<li class='layui-nav-item' style='width:75px;text-align:center;cursor:pointer;' v-on:click='loginOut'><b style='color:black;font-weight:normal;' >退出</b></li></ul>",
+      methods :{
+        loginOut (){
+          this.$baseAPI.openedMenu=[]
+          localStorage.esteban_TOKEN = ""
+          window.location.href = "#/login"
+        }
+      }
     }
   }
 }

@@ -1,0 +1,10 @@
+
+.login-bg {min-height:1000px;height:100%; overflow:hidden;!important;display:block;background-image: url(../img/login-bg.jpg) !important;background-repeat: no-repeat;background-attachment: fixed;background-size: cover;}
+.login-form {width:375px;height:300px;background-color: #f2f2f2;position:absolute;top:40%;left: 65%;border-radius:6px;}
+.login-form .login-form-title{height:35px;border-bottom:1px solid #e8eaec;padding-top:20px;padding-left:25px;}
+.login-form .login-form-title p{color: #17233d;font-weight: bold;font-size: 16px;}
+.login-form-username-icon {width: 35px !important;}
+.login-form-username-icon {width: 35px !important;}
+.login-form-inputDiv {margin-left: 65px !important;line-height: 10px !important;}
+.login-form-input {height: 32px !important;width: 280px !important;}
+.login-form .login-button  {height: 38px !important;width: 318px !important;margin-left: 27px;}

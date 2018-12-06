@@ -1,5 +1,5 @@
 <template>
-  <ul class="layui-nav layui-nav-tree" lay-filter="demo">
+  <ul class="layui-nav layui-nav-tree" lay-filter="leftMenuTree">
     <li class="layui-nav-item" v-for="(d,index) in dataList" :menuName="d[1]">
       <a v-if="d[0]" :id="d[3]" :href="d[2]" @click="openMenu(d[3],d[4])">{{d[1]}}</a>
       <dl class="layui-nav-child" style="display:none;">
@@ -10,7 +10,6 @@
 </template>
 
 <script>
-  var openedMenu = []
   var totalMenuNum = 10
 
   export default {
@@ -25,8 +24,9 @@
     },
     mounted (){
       let vueObj = this
-      $(document).on('click','.subMenuClass',vueObj, function() {
-        let flag = $.inArray(menuId, openedMenu)
+      let openedMenu_ = this.$baseAPI.openedMenu
+      $(document).off('click','.subMenuClass').on('click','.subMenuClass',vueObj, function() {
+        let flag = $.inArray(menuId, openedMenu_)
         let menuId = $(this).attr("id")
         let grade = $(this).attr("grade")
         vueObj.openMenu(menuId,grade)
@@ -38,8 +38,8 @@
       },
       openMenu(menuId,grade){
         //判断菜单是否已经加载
-        let flag = $.inArray(menuId, openedMenu)
-        if(flag != -1){
+        let flag = $.inArray(menuId, this.$baseAPI.openedMenu)
+        if(flag != -1 && $("#"+menuId).nextAll().length != 1){
           return false;
         }
         //懒加载菜单信息
@@ -47,6 +47,7 @@
           let params = {
             parentId:menuId,
             grade:grade,
+            userId:localStorage.userId,
             token:localStorage.esteban_TOKEN
           }
           this.$baseAPI.get('interfaceAdapter', params ,10005 ,localStorage.esteban_TOKEN , r => {
@@ -80,7 +81,7 @@
             }
 
             $("#"+menuId).after(htmlStr);
-            openedMenu.push(menuId)
+            this.$baseAPI.openedMenu.push(menuId)
 
             //左侧菜单点击打开tab事件
             $(".menuNavChild").off("click").on("click", function(e){
@@ -92,6 +93,10 @@
               //rightTabNav 是固定写死的id
               //判断总标签数，大于10个，则不能新打开
               if($(".layui-tab[lay-filter='rightTabNav'] ul:first.layui-tab-title").children(".tab_nav_class").length <= totalMenuNum){
+                //左侧菜单选中后改变颜色
+                $(".layui-nav-tree[lay-filter='leftMenuTree']").find("li dl a").css("background","none")
+                $("#"+this.id+" a").css("background","#009688")
+
                 if($(".layui-tab-title [lay-id='"+navId_+"']").length == 0){
                   layui.use('element', function(){
                     var element = layui.element;
@@ -106,6 +111,7 @@
 
                     //tab绑定切换事件
                     $(".tabMenuClick").off("click").on("click", function(){
+
                       let tabMenuId_ = this.getAttribute("tabMenuId")
                       let mStr = "<a style='color:#878585;'>home</a>"
 
@@ -119,11 +125,19 @@
                         mStr+="&nbsp;&nbsp;&nbsp;<b style='color:black !important;'>/&nbsp;&nbsp;&nbsp;"+$("#"+tabMenuId_)[0].innerText+"</b>"
                       }
 
+                      $(".layui-tab-title").find("div.navDot").css("cssText", "background-color:#E8EAEC !important;position:absolute;top:8px;width:13px;height:13px;border-radius:50px;float:left")
+                      if(tabMenuId_!="home"){
+                        $(".layui-tab-title [lay-id='nav_tab_"+tabMenuId_+"']").find("div.navDot").css("background","#2D8CF0")
+                      }else{
+                        $(".layui-tab-title [lay-id='"+tabMenuId_+"']").find("div.navDot").css("background","#2D8CF0")
+                      }
+
                       $("#header-url-str").html(mStr)
                     })
 
                     //tab绑定关闭事件
                     $(".layui-tab[lay-filter='rightTabNav'] .layui-tab-close").off("click").on("click", function(){
+
                       let menuId = $(this).parent()[0].getAttribute("lay-id")
                       layui.use('element', function(){
                         var element = layui.element;
@@ -145,6 +159,13 @@
                       }
 
                       $("#header-url-str").html(mStr)
+
+                      $(".layui-tab-title").find("div.navDot").css("cssText", "background-color:#E8EAEC !important;position:absolute;top:8px;width:13px;height:13px;border-radius:50px;float:left")
+                      if(tabMenuId_!="home"){
+                        $(".layui-tab-title [lay-id='nav_tab_"+tabMenuId_+"']").find("div.navDot").css("background","#2D8CF0")
+                      }else{
+                        $(".layui-tab-title [lay-id='"+tabMenuId_+"']").find("div.navDot").css("background","#2D8CF0")
+                      }
                     })
 
                     element.tabChange('rightTabNav', navId_);
@@ -161,8 +182,32 @@
                   mStr+="&nbsp;&nbsp;&nbsp;<b style='color:black !important;'>/&nbsp;&nbsp;&nbsp;"+$("#"+id_)[0].innerText+"</b>"
 
                   $("#header-url-str").html(mStr)
-                }else{
 
+                  $(".layui-tab-title").find("div.navDot").css("cssText", "background-color:#E8EAEC !important;position:absolute;top:8px;width:13px;height:13px;border-radius:50px;float:left")
+                  if(id_!="home"){
+                    $(".layui-tab-title [lay-id='nav_tab_"+id_+"']").find("div.navDot").css("background","#2D8CF0")
+                  }else{
+                    $(".layui-tab-title [lay-id='"+id_+"']").find("div.navDot").css("background","#2D8CF0")
+                  }
+                }else{
+                  $(".layui-tab-title").find("div.navDot").css("cssText", "background-color:#E8EAEC !important;position:absolute;top:8px;width:13px;height:13px;border-radius:50px;float:left")
+                  $(".layui-tab-title [lay-id='"+navId_+"']").find("div.navDot").css("background","#2D8CF0")
+
+                  let mStr = "<a style='color:#878585;'>home</a>"
+                  if(id_!="home"){
+                    if($($("#"+id_)[0].parentNode.parentNode.parentNode.parentNode).isChildOf(".layui-nav-tree")){
+                      mStr+="&nbsp;&nbsp;&nbsp;<a style='color:#878585;'>/&nbsp;&nbsp;&nbsp;"+$("#"+id_)[0].parentNode.parentNode.parentNode.parentNode.getAttribute("menuName")+"</a>"
+                    }
+                    if($($("#"+id_)[0].parentNode).isChildOf(".layui-nav-tree")){
+                      mStr+="&nbsp;&nbsp;&nbsp;<a style='color:#878585;'>/&nbsp;&nbsp;&nbsp;"+$("#"+id_)[0].parentNode.getAttribute("menuName")+"</a>"
+                    }
+                    mStr+="&nbsp;&nbsp;&nbsp;<b style='color:black !important;'>/&nbsp;&nbsp;&nbsp;"+$("#"+id_)[0].innerText+"</b>"
+                  }
+
+                  $(".layui-tab-title").find("div.navDot").css("cssText", "background-color:#E8EAEC !important;position:absolute;top:8px;width:13px;height:13px;border-radius:50px;float:left")
+                  $(".layui-tab-title [lay-id='nav_tab_"+id_+"']").find("div.navDot").css("background","#2D8CF0")
+
+                  $("#header-url-str").html(mStr)
                 }
               }else{
                 if($(".layui-tab-title [lay-id='"+navId_+"']").length == 0){

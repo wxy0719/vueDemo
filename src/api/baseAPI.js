@@ -5,6 +5,8 @@ var root = "http://localhost:8088"
 //引用axios
 var axios = require('axios')
 
+var openedMenu=[]
+
 import md5 from 'js-md5';
 
 let Base64 = require('js-base64').Base64;
@@ -47,13 +49,16 @@ function apiAxios (method, url, params, success, failure) {
     data: method === 'add' || method === 'edit' ? params : null,
     params: method === 'get' || method === 'delete' ? params : null,
     baseURL: root,
-    withCredentials: false
+    withCredentials: false,
+    validateStatus: function(status){return status < 500 }
   })
   .then(function (res) {
     if (res.data.code == 200) {
       if(res.data.data.status == 200){
         success(res.data.data)
         return res.data.data
+      }else if(res.data.data.status == 509){
+        window.location.href = "#/login"
       }else{
         failure(res.data.data);
       }
@@ -111,5 +116,5 @@ export default {
     var data = formatData(params,adapterNo,token)
     return apiAxios('delete',url, data, success, failure)
   },
-
+  openedMenu,
 }
