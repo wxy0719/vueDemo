@@ -4,7 +4,7 @@
     <!-- 头部区域（可配合layui已有的水平导航） -->
 
     <div style="position:absolute;left:230px;top:25px;">
-      <i class="layui-icon layui-icon-shrink-right" style="font-size: 20px; color: #393D49;cursor:pointer;"></i>
+      <i class="layui-icon layui-icon-shrink-right" style="font-size: 20px; color: #393D49;"></i>
       <a id="header-url-str" style="margin-left:40px;color:#878585;">home</a>
     </div>
 

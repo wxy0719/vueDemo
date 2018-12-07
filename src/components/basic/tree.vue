@@ -62,13 +62,14 @@
               }else if(ml[i][4] == "3"){
                 widthClstyle ="style='width:154px !important;'"
               }
-
               if(ml[i][0] == "true"){
                 //菜单是文件夹
                 htmlStr +="<dl class='layui-nav-child' "+widthClstyle+" >"+
                           "<dd>"+
-                          "<li class='layui-nav-item layui-nav-itemed' menuName='"+ml[i][1]+"'>"+
-                          "<a id="+ml[i][3]+" grade="+ml[i][4]+" class='subMenuClass' href="+ml[i][2]+" style='background-color: #393D49 !important;margin-right:8px;'>"+ml[i][1]+"</a>"+
+                          "<li class='layui-nav-item' menuName='"+ml[i][1]+"'>"+
+                          "<a id="+ml[i][3]+" grade="+ml[i][4]+" class='subMenuClass' href="+ml[i][2]+" style='background-color: #393D49 !important;margin-right:8px;'>"+ml[i][1]+
+                          "<span class='layui-nav-more'></span>"+
+                          "</a>"+
                           "<dl class='layui-nav-child' style='display:none;'><router-link to='test'>test</router-link></dl>"+
                           "</li>"+
                           "</dd>"+
@@ -76,10 +77,13 @@
               }else{
                 //菜单是功能模块
                 //htmlStr +="<dl class='layui-nav-child' "+widthClstyle+"><a href='#/"+ml[i][2]+"'>"+ml[i][1]+"</a></dl>"
-                htmlStr +="<dl class='layui-nav-child menuNavChild' "+widthClstyle+" id='"+ml[i][3]+"' menuUrl='"+ml[i][2]+"'><a href='#/"+ml[i][2]+"'>"+ml[i][1]+"</a></dl>"
+                htmlStr +="<dl class='layui-nav-child menuNavChild' "+widthClstyle+" id='"+ml[i][3]+"' menuUrl='"+ml[i][2]+"'><a class='openUrlA' href='#/"+ml[i][2]+"'>"+ml[i][1]+"</a></dl>"
               }
             }
 
+            if(!$("#"+menuId).parent().hasClass("layui-nav-itemed")){
+              $("#"+menuId).parent().addClass("layui-nav-itemed")
+            }
             $("#"+menuId).after(htmlStr);
             this.$baseAPI.openedMenu.push(menuId)
 
@@ -94,7 +98,7 @@
               //判断总标签数，大于10个，则不能新打开
               if($(".layui-tab[lay-filter='rightTabNav'] ul:first.layui-tab-title").children(".tab_nav_class").length <= totalMenuNum){
                 //左侧菜单选中后改变颜色
-                $(".layui-nav-tree[lay-filter='leftMenuTree']").find("li dl a").css("background","none")
+                $(".layui-nav-tree[lay-filter='leftMenuTree']").find("li dl a[class='openUrlA']").css("background","none")
                 $("#"+this.id+" a").css("background","#009688")
 
                 if($(".layui-tab-title [lay-id='"+navId_+"']").length == 0){
